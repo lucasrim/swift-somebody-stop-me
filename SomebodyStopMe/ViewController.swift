@@ -53,10 +53,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //        let myLat = String(locationManager.location!.coordinate.latitude)
 //        let myLong = String(locationManager.location!.coordinate.longitude)
         
-        print(destination)
-        print(busLine)
-
-        let urlPath : String = "https://localhost:3000/post/new"
+        let urlPath : String = "http://localhost:3000/votes"
         
         let url : NSURL = NSURL(string: urlPath)!
         
@@ -66,8 +63,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         let dataString = "{\"data\":{\"address\":\"\(destination)\",\"busLine\":\"\(busLine)\"}}"
         
-        print(dataString)
+        let requestBodyData = (dataString as NSString).dataUsingEncoding(NSUTF8StringEncoding)
         
+        request.HTTPBody = requestBodyData
+        
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) {urlData, response, responseError in
+            print("")
+        }
+        
+        task.resume()
     }
     
     
