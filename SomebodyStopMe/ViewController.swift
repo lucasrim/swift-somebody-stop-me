@@ -53,7 +53,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //        let myLat = String(locationManager.location!.coordinate.latitude)
 //        let myLong = String(locationManager.location!.coordinate.longitude)
         
-        let urlPath : String = "http://localhost:3000/votes"
+        let urlPath : String = "http://localhost:3000/busstops/api.json"
         
         let url : NSURL = NSURL(string: urlPath)!
         
@@ -61,11 +61,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         request.HTTPMethod = "POST"
         
-        let dataString = "{\"data\":{\"address\":\"\(destination)\",\"busLine\":\"\(busLine)\"}}"
+//        let dataString = "{\"data\":{\"address\":\"\(destination)\",\"busLine\":\"\(busLine)\"}}"
         
-        let requestBodyData = (dataString as NSString).dataUsingEncoding(NSUTF8StringEncoding)
+        let data : NSString = "data=['\(destination)', '\(busLine)']"
+        
+        let requestBodyData = (data as NSString).dataUsingEncoding(NSUTF8StringEncoding)
+        
+        let postLength = String(requestBodyData!.length)
         
         request.HTTPBody = requestBodyData
+        request.setValue(postLength, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
         
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) {urlData, response, responseError in
