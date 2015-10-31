@@ -41,10 +41,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func trackRouteButton(sender: AnyObject) {
-        setCoordinates()
+        setCoordinates() { data, response, error in
+            if error != nil {
+                if error.domain == NSURLErrorDomain && error.code == NSURLErrorTimedOut {
+                    print("timed out") // note, `response` is likely `nil` if it timed out
+                }
+            }
+        }
     }
     
-    func setCoordinates() {
+    func setCoordinates(callBack: ((data: NSDictionary!, response: NSURLResponse!, error: NSError!) -> Void)?) {
+        var jsonData: NSDictionary = Dictionary<String,String>()
         
         let destination = destinationField.text!
         
@@ -53,7 +60,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //        let myLat = String(locationManager.location!.coordinate.latitude)
 //        let myLong = String(locationManager.location!.coordinate.longitude)
         
-        let urlPath : String = "http://localhost:3000/busstops/api.json"
+        let urlPath : String = "http://localhost:3000/busstops/api"
         
         let url : NSURL = NSURL(string: urlPath)!
         
@@ -63,7 +70,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
 //        let dataString = "{\"data\":{\"address\":\"\(destination)\",\"busLine\":\"\(busLine)\"}}"
         
-        let data : NSString = "data=['\(destination)', '\(busLine)']"
+        let data : NSString = "data='\(destination)','\(busLine)'"
         
         let requestBodyData = (data as NSString).dataUsingEncoding(NSUTF8StringEncoding)
         
@@ -76,7 +83,51 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) {urlData, response, responseError in
-            print("")
+            if let receivedData = urlData {
+                let res = response as! NSHTTPURLResponse!;
+                NSLog("Response code: %ld", res.statusCode);
+                
+                if 200..<300 ~= res.statusCode {
+                    do {
+                        jsonData = try NSJSONSerialization.JSONObjectWithData(receivedData, options: []) as! NSDictionary
+                        let lat:Double = Double(jsonData["lat"]! as! NSNumber)
+                        let lon:Double = Double(jsonData["lon"]! as! NSNumber)
+                        let coord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, lon)
+                        print(coord)
+                        
+                        //On success, invoke `completion` with passing jsonData.
+                        callBack?(data: jsonData, response: response, error: nil)
+                    } catch let error as NSError {
+                        let returnedError = NSError(domain: "findBusStopAsync", code: 3, userInfo: [
+                            "title": "Could not find!",
+                            "message": "Invalid Data!",
+                            "cause": error
+                            ])
+                        //On error, invoke `completion` with NSError.
+                        callBack?(data: nil, response: response, error: returnedError)
+                    }
+                } else {
+                    let returnedError = NSError(domain: "findBusStopAsync", code: 1, userInfo: [
+                        "title": "Could not find!",
+                        "message": "Could not connect!"
+                        ])
+                    //On error, invoke `completion` with NSError.
+                    callBack?(data: nil, response: response, error: returnedError)
+                }
+            } else {
+                var userInfo: [NSObject: AnyObject] = [
+                    "title": "Could not find!",
+                    "message": "Could not connect"
+                ]
+                if let error = responseError {
+                    userInfo["message"] = error.localizedDescription
+                    userInfo["cause"] = error
+                }
+                let returnedError = NSError(domain: "findBusStopAsync", code: 2, userInfo: userInfo)
+                //On error, invoke `completion` with NSError.
+                callBack?(data: nil, response: response, error: returnedError)
+            }
+
         }
         
         task.resume()
