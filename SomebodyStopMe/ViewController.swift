@@ -50,8 +50,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func setCoordinates(callBack: ((data: NSArray!, response: NSURLResponse!, error: NSError!) -> Void)?) {
-        var jsonData: NSArray = []
+    func setCoordinates(callBack: ((data: NSDictionary!, response: NSURLResponse!, error: NSError!) -> Void)?) {
+        var jsonData: NSDictionary = Dictionary<String,String>()
         
         let destination = destinationField.text!
         
@@ -85,13 +85,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let task = session.dataTaskWithRequest(request) {urlData, response, responseError in
             if let receivedData = urlData {
                 let res = response as! NSHTTPURLResponse!;
-                print("\(receivedData)")
-                print("\(res)")
                 NSLog("Response code: %ld", res.statusCode);
                 
                 if 200..<300 ~= res.statusCode {
                     do {
-                        jsonData = try NSJSONSerialization.JSONObjectWithData(receivedData, options: []) as! NSArray
+                        jsonData = try NSJSONSerialization.JSONObjectWithData(receivedData, options: []) as! NSDictionary
+                        print("\(jsonData)")
                         //On success, invoke `completion` with passing jsonData.
                         callBack?(data: jsonData, response: response, error: nil)
                     } catch let error as NSError {
