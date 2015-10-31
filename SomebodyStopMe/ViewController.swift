@@ -9,6 +9,7 @@
 
 import UIKit
 import CoreLocation
+import Alamofire
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
@@ -49,39 +50,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let destination = destinationField.text!
         
         let busLine = busLineField.text!
-//        
-//        let myLat = String(locationManager.location!.coordinate.latitude)
-//        let myLong = String(locationManager.location!.coordinate.longitude)
         
-        let urlPath : String = "http://localhost:3000/busstops/api.json"
+        let urlPath : String = "http://localhost:3000/busstops/api"
         
-        let url : NSURL = NSURL(string: urlPath)!
+        let parameters:[String:AnyObject] = [
+            "address" : destination,
+            "busLine" : busLine
+        ]
         
-        let request : NSMutableURLRequest = NSMutableURLRequest(URL:url)
+        Alamofire.request(.POST, urlPath, parameters: parameters, encoding:.JSON).responseJSON
+            { response in switch response.result {
+            case .Success(let JSON):
+                print("Success with JSON: \(JSON)")
+                
+            case .Failure(let error):
+                print("Request failed with error: \(error)")
+                }
+        }
+
+
         
-        request.HTTPMethod = "POST"
-        
-//        let dataString = "{\"data\":{\"address\":\"\(destination)\",\"busLine\":\"\(busLine)\"}}"
-        
-        let data : NSString = "data=['\(destination)', '\(busLine)']"
-        
-        let requestBodyData = (data as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-        
-        let postLength = String(requestBodyData!.length)
-        
-        request.HTTPBody = requestBodyData
-        request.setValue(postLength, forHTTPHeaderField: "Content-Length")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request) {urlData, response, responseError in
-            print("")
         }
         
-        task.resume()
-    }
-    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
