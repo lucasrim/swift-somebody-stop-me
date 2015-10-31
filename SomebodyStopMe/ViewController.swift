@@ -90,7 +90,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 if 200..<300 ~= res.statusCode {
                     do {
                         jsonData = try NSJSONSerialization.JSONObjectWithData(receivedData, options: []) as! NSDictionary
-                        print("\(jsonData)")
+                        let lat:Double = Double(jsonData["lat"]! as! NSNumber)
+                        let lon:Double = Double(jsonData["lon"]! as! NSNumber)
+                        let coord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, lon)
+                        print(coord)
+                        
                         //On success, invoke `completion` with passing jsonData.
                         callBack?(data: jsonData, response: response, error: nil)
                     } catch let error as NSError {
