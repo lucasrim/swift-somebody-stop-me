@@ -57,20 +57,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             "address" : destination,
             "busLine" : busLine
         ]
-        
-        Alamofire.request(.POST, urlPath, parameters: parameters, encoding:.JSON).responseJSON
-            { response in switch response.result {
-            case .Success(let JSON):
-                print("Success with JSON: \(JSON)")
-                
-            case .Failure(let error):
-                print("Request failed with error: \(error)")
-                }
+        Alamofire.request(.POST, urlPath, parameters: parameters).responseJSON{response in
+            print()
         }
-
-
         
-        }
+    }
         
 
     
