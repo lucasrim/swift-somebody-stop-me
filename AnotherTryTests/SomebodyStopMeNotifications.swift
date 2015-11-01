@@ -1,9 +1,8 @@
 //
-//  AnotherTryTests.swift
-//  AnotherTryTests
+//  SomebodyStopMeNotifications.swift
 //
-//  Created by Owner on 10/31/15.
-//  Copyright © 2015 Sheena Bryant. All rights reserved.
+//  Created by Sheena on 10/31/15.
+//  Copyright © 2015  All rights reserved.
 //
 
 import XCTest

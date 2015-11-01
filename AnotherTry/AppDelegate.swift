@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  AnotherTry
+//  SomebodyStopMeNotifications
 //
-//  Created by Owner on 10/31/15.
-//  Copyright © 2015 Sheena Bryant. All rights reserved.
+//  Created by Sheena on 10/31/15.
+//  Copyright © 2015 
 //
 
 import UIKit
@@ -16,8 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if(UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:"))) {
+            UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge], categories: nil))
+            print("test6")
+        }
+        
         return true
-    }
+        
+         }
+    
+        func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+            application.applicationIconBadgeNumber = 0
+            print("test7")
+        }
+   
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
