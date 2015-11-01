@@ -9,6 +9,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
@@ -94,6 +95,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         let lon:Double = Double(jsonData["lon"]! as! NSNumber)
                         let coord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, lon)
                         print(coord)
+                        
+                        let distance:Double = 100000
+                        
+                        while distance > 300 {
+                            let currentLat:Double = Double(self.locationManager.location!.coordinate.latitude)
+                            let currentLon:Double = Double(self.locationManager.location!.coordinate.longitude)
+                            let currentCoord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(currentLat, currentLon)
+                            let point1: MKMapPoint = MKMapPointForCoordinate(coord)
+                            let point2: MKMapPoint = MKMapPointForCoordinate(currentCoord)
+                            let distance: CLLocationDistance = MKMetersBetweenMapPoints(point1, point2)
+                            print(distance)
+                            
+                        }
                         
                         //On success, invoke `completion` with passing jsonData.
                         callBack?(data: jsonData, response: response, error: nil)
