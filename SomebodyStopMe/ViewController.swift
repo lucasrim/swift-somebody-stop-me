@@ -40,6 +40,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    var latitude : Double = 0.0
+    var longitude : Double = 0.0
+    
     
     @IBAction func trackRouteButton(sender: AnyObject) {
         //toggles keyboard up when text field is selected, and down when track route button is pressed.
@@ -70,7 +73,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //        let myLat = String(locationManager.location!.coordinate.latitude)
 //        let myLong = String(locationManager.location!.coordinate.longitude)
         
-        let urlPath : String = "http://localhost:3000/busstops/api"
+        let urlPath : String = "https://somebody-stop-me.herokuapp.com/busstops/api"
         
         let url : NSURL = NSURL(string: urlPath)!
         
@@ -102,21 +105,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         jsonData = try NSJSONSerialization.JSONObjectWithData(receivedData, options: []) as! NSDictionary
                         let lat:Double = Double(jsonData["lat"]! as! NSNumber)
                         let lon:Double = Double(jsonData["lon"]! as! NSNumber)
+                        
+                        self.latitude = lat
+                        self.longitude = lon
+                        
                         let coord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, lon)
                         print(coord)
                         
-                        let distance:Double = 100000
+//                        let distance:Double = 100000
                         
-                        while distance > 300 {
-                            let currentLat:Double = Double(self.locationManager.location!.coordinate.latitude)
-                            let currentLon:Double = Double(self.locationManager.location!.coordinate.longitude)
-                            let currentCoord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(currentLat, currentLon)
-                            let point1: MKMapPoint = MKMapPointForCoordinate(coord)
-                            let point2: MKMapPoint = MKMapPointForCoordinate(currentCoord)
-                            let distance: CLLocationDistance = MKMetersBetweenMapPoints(point1, point2)
-                            print(distance)
-                            
-                        }
+//                        while distance > 300 {
+//                            var currentLat:Double = Double(self.locationManager.location!.coordinate.latitude)
+//                            var currentLon:Double = Double(self.locationManager.location!.coordinate.longitude)
+//                            var currentCoord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(currentLat, currentLon)
+//                            var point1: MKMapPoint = MKMapPointForCoordinate(coord)
+//                            var point2: MKMapPoint = MKMapPointForCoordinate(currentCoord)
+//                            var distance: CLLocationDistance = MKMetersBetweenMapPoints(point1, point2)
+//                            print(distance)
+//                            
+//                        }
                         
                         //On success, invoke `completion` with passing jsonData.
                         callBack?(data: jsonData, response: response, error: nil)
@@ -150,12 +157,36 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 //On error, invoke `completion` with NSError.
                 callBack?(data: nil, response: response, error: returnedError)
             }
-
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.performSegueWithIdentifier("segueVC2", sender: self)
+            })
+            
         }
         
         task.resume()
+        
+        
     }
     
+        override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
+            if (segue.identifier=="segueVC2")
+            {
+                let destinationVC = segue.destinationViewController as! ViewController2
+
+                destinationVC.latitude = self.latitude
+                destinationVC.longitude = self.longitude
+                
+//                destinationVC.givenLat = self.lat
+//                destinationVC.givenLon = self.lon
+//    
+//                print("*******")
+//                print(self.lat)
+//                print("*******")
+                
+            }
+        }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

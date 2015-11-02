@@ -94,11 +94,60 @@
                     <connections>
                         <outlet property="busLineField" destination="Jdy-aa-34D" id="XQg-Rb-O1L"/>
                         <outlet property="destinationField" destination="iAN-AO-2ac" id="PyV-hh-U7X"/>
+                        <segue destination="mUJ-Y3-dmc" kind="show" identifier="segueVC2" id="seT-Pq-OxS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="552" y="288"/>
+        </scene>
+        <!--View Controller2-->
+        <scene sceneID="uCn-9K-3nR">
+            <objects>
+                <viewController id="mUJ-Y3-dmc" customClass="ViewController2" customModule="SomebodyStopMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Kh-I1-mAO"/>
+                        <viewControllerLayoutGuide type="bottom" id="6fO-Sl-jWP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N8V-kR-sfr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1N-7y-bTF">
+                                <rect key="frame" x="266" y="12" width="149" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HrU-pW-yL6">
+                                <rect key="frame" x="219" y="537" width="163" height="30"/>
+                                <state key="normal" title="Start Monitoring Region"/>
+                                <connections>
+                                    <action selector="regionMonitoring:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3bD-xV-Cdw"/>
+                                    <action selector="regionMonitoring:" destination="mUJ-Y3-dmc" eventType="touchUpInside" id="dgd-Xt-ZQB"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LKW-2P-oH6">
+                                <rect key="frame" x="0.0" y="34" width="600" height="437"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unG-oP-Wfc">
+                                <rect key="frame" x="200" y="499" width="179" height="30"/>
+                                <state key="normal" title="Get Your Current Location"/>
+                                <connections>
+                                    <action selector="getLocation:" destination="mUJ-Y3-dmc" eventType="touchUpInside" id="e4D-Qn-hWy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="address" destination="M1N-7y-bTF" id="TDg-ft-Xnj"/>
+                        <outlet property="onnscreenMap" destination="LKW-2P-oH6" id="beF-Ju-gts"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c9m-ax-hTJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="883" y="305"/>
         </scene>
     </scenes>
     <resources>
