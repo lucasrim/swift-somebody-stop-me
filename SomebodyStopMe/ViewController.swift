@@ -48,6 +48,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     
     
     @IBAction func trackRouteButton(sender: AnyObject) {
+        //toggles keyboard up when text field is selected, and down when track route button is pressed.
+        self.destinationField.resignFirstResponder()
+        self.busLineField.resignFirstResponder()
+        
         setCoordinates() { data, response, error in
             if error != nil {
                 if error.domain == NSURLErrorDomain && error.code == NSURLErrorTimedOut {
@@ -55,6 +59,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
                 }
             }
         }
+    }
+    
+    // toggles keyboard down when screen is touched
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     func setCoordinates(callBack: ((data: NSDictionary!, response: NSURLResponse!, error: NSError!) -> Void)?) {
