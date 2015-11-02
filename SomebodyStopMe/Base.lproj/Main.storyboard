@@ -149,6 +149,13 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LKW-2P-oH6">
                                 <rect key="frame" x="0.0" y="34" width="600" height="437"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unG-oP-Wfc">
+                                <rect key="frame" x="200" y="499" width="179" height="30"/>
+                                <state key="normal" title="Get Your Current Location"/>
+                                <connections>
+                                    <action selector="getLocation:" destination="mUJ-Y3-dmc" eventType="touchUpInside" id="e4D-Qn-hWy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
