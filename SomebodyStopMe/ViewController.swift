@@ -11,7 +11,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var currentLocationLabel: UILabel!
 
@@ -28,6 +28,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
+        self.destinationField.delegate = self;
+        self.busLineField.delegate = self;
+
 
     }
 
@@ -60,9 +63,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let destination = destinationField.text!
         
         let busLine = busLineField.text!
-//        
-//        let myLat = String(locationManager.location!.coordinate.latitude)
-//        let myLong = String(locationManager.location!.coordinate.longitude)
         
         let urlPath : String = "https://somebody-stop-me.herokuapp.com/busstops/api"
         
@@ -72,7 +72,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         request.HTTPMethod = "POST"
         
-//        let dataString = "{\"data\":{\"address\":\"\(destination)\",\"busLine\":\"\(busLine)\"}}"
         
         let data : NSString = "data='\(destination)','\(busLine)'"
         
@@ -103,18 +102,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         let coord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, lon)
                         print(coord)
                         
-//                        let distance:Double = 100000
-                        
-//                        while distance > 300 {
-//                            var currentLat:Double = Double(self.locationManager.location!.coordinate.latitude)
-//                            var currentLon:Double = Double(self.locationManager.location!.coordinate.longitude)
-//                            var currentCoord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(currentLat, currentLon)
-//                            var point1: MKMapPoint = MKMapPointForCoordinate(coord)
-//                            var point2: MKMapPoint = MKMapPointForCoordinate(currentCoord)
-//                            var distance: CLLocationDistance = MKMetersBetweenMapPoints(point1, point2)
-//                            print(distance)
-//                            
-//                        }
                         
                         //On success, invoke `completion` with passing jsonData.
                         callBack?(data: jsonData, response: response, error: nil)
@@ -183,6 +170,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+
 
 
 }
