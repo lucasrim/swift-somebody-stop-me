@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37D535D91BE6E83B00A731AD /* backgroundGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D535D81BE6E83B00A731AD /* backgroundGradient.png */; };
+		37D535E71BE7CEF600A731AD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D535E41BE7CEF600A731AD /* logo.png */; };
+		37D535E81BE7CEF600A731AD /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D535E51BE7CEF600A731AD /* logo@2x.png */; };
+		37D535E91BE7CEF600A731AD /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D535E61BE7CEF600A731AD /* logo@3x.png */; };
+		37D535EB1BE7F2E200A731AD /* chi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37D535EA1BE7F2E200A731AD /* chi.jpg */; };
+		37D535ED1BE7F43900A731AD /* Somebody Stop Me.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D535EC1BE7F43900A731AD /* Somebody Stop Me.png */; };
+		37D535F11BE7F5EE00A731AD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D535EE1BE7F5EE00A731AD /* logo.png */; };
+		37D535F21BE7F5EE00A731AD /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D535EF1BE7F5EE00A731AD /* logo@2x.png */; };
+		37D535F31BE7F5EE00A731AD /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D535F01BE7F5EE00A731AD /* logo@3x.png */; };
 		E07CBBF81BE4006C005A0C38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07CBBF71BE4006C005A0C38 /* AppDelegate.swift */; };
 		E07CBBFA1BE4006C005A0C38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07CBBF91BE4006C005A0C38 /* ViewController.swift */; };
 		E07CBBFD1BE4006C005A0C38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E07CBBFB1BE4006C005A0C38 /* Main.storyboard */; };
@@ -39,6 +48,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37D535D81BE6E83B00A731AD /* backgroundGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backgroundGradient.png; path = ../../../../backgroundGradient.png; sourceTree = "<group>"; };
+		37D535E41BE7CEF600A731AD /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../../logos/logo.png; sourceTree = "<group>"; };
+		37D535E51BE7CEF600A731AD /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo@2x.png"; path = "../../../../logos/logo@2x.png"; sourceTree = "<group>"; };
+		37D535E61BE7CEF600A731AD /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo@3x.png"; path = "../../../../logos/logo@3x.png"; sourceTree = "<group>"; };
+		37D535EA1BE7F2E200A731AD /* chi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = chi.jpg; path = ../../../../chi.jpg; sourceTree = "<group>"; };
+		37D535EC1BE7F43900A731AD /* Somebody Stop Me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Somebody Stop Me.png"; path = "../../../../ssm-text/Somebody Stop Me.png"; sourceTree = "<group>"; };
+		37D535EE1BE7F5EE00A731AD /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = "../../../../red-logo/logo.png"; sourceTree = "<group>"; };
+		37D535EF1BE7F5EE00A731AD /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo@2x.png"; path = "../../../../red-logo/logo@2x.png"; sourceTree = "<group>"; };
+		37D535F01BE7F5EE00A731AD /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo@3x.png"; path = "../../../../red-logo/logo@3x.png"; sourceTree = "<group>"; };
 		5208406B1BE6CE4700B367A0 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		E07CBBF41BE4006C005A0C38 /* SomebodyStopMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SomebodyStopMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E07CBBF71BE4006C005A0C38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +113,15 @@
 				E07CBC0B1BE4006C005A0C38 /* SomebodyStopMeTests */,
 				E07CBC161BE4006C005A0C38 /* SomebodyStopMeUITests */,
 				E07CBBF51BE4006C005A0C38 /* Products */,
+				37D535D81BE6E83B00A731AD /* backgroundGradient.png */,
+				37D535E41BE7CEF600A731AD /* logo.png */,
+				37D535E51BE7CEF600A731AD /* logo@2x.png */,
+				37D535E61BE7CEF600A731AD /* logo@3x.png */,
+				37D535EA1BE7F2E200A731AD /* chi.jpg */,
+				37D535EC1BE7F43900A731AD /* Somebody Stop Me.png */,
+				37D535EE1BE7F5EE00A731AD /* logo.png */,
+				37D535EF1BE7F5EE00A731AD /* logo@2x.png */,
+				37D535F01BE7F5EE00A731AD /* logo@3x.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -250,7 +277,16 @@
 			files = (
 				EBEC0BAC1BE7F1CB00113657 /* SomebodyStopMeBell.aiff in Resources */,
 				E07CBC021BE4006C005A0C38 /* LaunchScreen.storyboard in Resources */,
+				37D535F21BE7F5EE00A731AD /* logo@2x.png in Resources */,
+				37D535ED1BE7F43900A731AD /* Somebody Stop Me.png in Resources */,
+				37D535F11BE7F5EE00A731AD /* logo.png in Resources */,
 				E07CBC281BE42652005A0C38 /* Default-568h@2x.png in Resources */,
+				37D535E91BE7CEF600A731AD /* logo@3x.png in Resources */,
+				37D535EB1BE7F2E200A731AD /* chi.jpg in Resources */,
+				37D535F31BE7F5EE00A731AD /* logo@3x.png in Resources */,
+				37D535E71BE7CEF600A731AD /* logo.png in Resources */,
+				37D535D91BE6E83B00A731AD /* backgroundGradient.png in Resources */,
+				37D535E81BE7CEF600A731AD /* logo@2x.png in Resources */,
 				E07CBBFF1BE4006C005A0C38 /* Assets.xcassets in Resources */,
 				E07CBBFD1BE4006C005A0C38 /* Main.storyboard in Resources */,
 				EBEC0BAE1BE7F31500113657 /* default.gpx in Resources */,
