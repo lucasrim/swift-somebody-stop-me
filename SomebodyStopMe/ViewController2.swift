@@ -6,32 +6,103 @@
 //  Copyright © 2015 Lucas Rim. All rights reserved.
 //
 
-import Foundation
-import CoreLocation
 import UIKit
+import MapKit
+import CoreLocation
 
 class ViewController2: UIViewController, CLLocationManagerDelegate {
-    @IBOutlet weak var coordinatesLabel: UILabel!
-    @IBOutlet weak var latLabel: UILabel!
-    @IBOutlet weak var lonLabel: UILabel!
+    var manager: CLLocationManager?
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
     
-    var textForLat : Double = 0.0
-    
-    var textForLon : Double = 0.0
-    
+    @IBOutlet weak var onnscreenMap: MKMapView!
+    @IBOutlet weak var address: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        coordinatesLabel.text = "hello"
+        manager = CLLocationManager()
+        manager?.delegate = self;
+        manager?.desiredAccuracy = kCLLocationAccuracyBest
+        manager?.requestAlwaysAuthorization()
+        manager?.startUpdatingLocation()
+    }
+    
+    
+    @IBAction func getLocation(sender: AnyObject) {
+        manager?.requestWhenInUseAuthorization()
+        manager?.startUpdatingLocation()
+        print("test1")
+    }
+    
+    @IBAction func regionMonitoring(sender: AnyObject) {
+        manager?.requestAlwaysAuthorization()
+        let currentRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 1000, identifier: "Test")
+        manager?.startMonitoringForRegion(currentRegion)
         
-        latLabel.text = "\(textForLat)"
-        lonLabel.text = "\(textForLon)"
-
     }
 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
-
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        manager.stopUpdatingLocation()
+        
+        let location = locations[0] as CLLocation
+        
+        let geoCoder = CLGeocoder()
+        
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { (data, error) -> Void in
+            
+            let placeMarks = data ?? []
+            
+            let loc: CLPlacemark = placeMarks[0]
+            
+            self.onnscreenMap.centerCoordinate = location.coordinate
+            
+            let addr = loc.locality
+            
+            self.address.text = addr
+            
+            let reg = MKCoordinateRegionMakeWithDistance(location.coordinate, 1500, 1500)
+            
+            self.onnscreenMap.setRegion(reg, animated: true)
+            
+            self.onnscreenMap.showsUserLocation = true
+            
+        })
+        
+    }
+    
+    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion!){
+        NSLog("Your bus stop is approaching.")
+        let entryNotification = UILocalNotification()
+        entryNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
+        entryNotification.alertBody = "Your bus stop is approaching. Be prepared to get off the bus shortly."
+        entryNotification.timeZone = NSTimeZone.defaultTimeZone()
+        entryNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
+        print("test4")
+        
+    }
+    
+    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion!){
+        NSLog("This is a test to see if we are cooking with gas.")
+        let exitNotification = UILocalNotification()
+        exitNotification.alertBody = "Test, test, test."
+        exitNotification.timeZone = NSTimeZone.defaultTimeZone()
+        exitNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(exitNotification)
+        print("test5")
+        
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError!){
+        NSLog("Something has gone terribly wrong.")
+    }
 }
