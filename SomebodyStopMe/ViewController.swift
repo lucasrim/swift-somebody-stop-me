@@ -61,7 +61,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //        let myLat = String(locationManager.location!.coordinate.latitude)
 //        let myLong = String(locationManager.location!.coordinate.longitude)
         
-        let urlPath : String = "http://localhost:3000/busstops/api"
+        let urlPath : String = "https://somebody-stop-me.herokuapp.com/busstops/api"
         
         let url : NSURL = NSURL(string: urlPath)!
         
@@ -96,18 +96,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         let coord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, lon)
                         print(coord)
                         
-                        let distance:Double = 100000
+//                        let distance:Double = 100000
                         
-                        while distance > 300 {
-                            let currentLat:Double = Double(self.locationManager.location!.coordinate.latitude)
-                            let currentLon:Double = Double(self.locationManager.location!.coordinate.longitude)
-                            let currentCoord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(currentLat, currentLon)
-                            let point1: MKMapPoint = MKMapPointForCoordinate(coord)
-                            let point2: MKMapPoint = MKMapPointForCoordinate(currentCoord)
-                            let distance: CLLocationDistance = MKMetersBetweenMapPoints(point1, point2)
-                            print(distance)
-                            
-                        }
+//                        while distance > 300 {
+//                            var currentLat:Double = Double(self.locationManager.location!.coordinate.latitude)
+//                            var currentLon:Double = Double(self.locationManager.location!.coordinate.longitude)
+//                            var currentCoord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(currentLat, currentLon)
+//                            var point1: MKMapPoint = MKMapPointForCoordinate(coord)
+//                            var point2: MKMapPoint = MKMapPointForCoordinate(currentCoord)
+//                            var distance: CLLocationDistance = MKMetersBetweenMapPoints(point1, point2)
+//                            print(distance)
+//                            
+//                        }
                         
                         //On success, invoke `completion` with passing jsonData.
                         callBack?(data: jsonData, response: response, error: nil)
