@@ -165,8 +165,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             {
                 let destinationVC = segue.destinationViewController as! ViewController2
 
-                destinationVC.textForLat = self.latitude
-                destinationVC.textForLon = self.longitude
+                destinationVC.latitude = self.latitude
+                destinationVC.longitude = self.longitude
                 
 //                destinationVC.givenLat = self.lat
 //                destinationVC.givenLon = self.lon
