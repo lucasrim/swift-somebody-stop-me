@@ -40,6 +40,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    var latitude : Double = 0.0
+    var longitude : Double = 0.0
+    
     
     @IBAction func trackRouteButton(sender: AnyObject) {
         setCoordinates() { data, response, error in
@@ -93,6 +96,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         jsonData = try NSJSONSerialization.JSONObjectWithData(receivedData, options: []) as! NSDictionary
                         let lat:Double = Double(jsonData["lat"]! as! NSNumber)
                         let lon:Double = Double(jsonData["lon"]! as! NSNumber)
+                        
+                        self.latitude = lat
+                        self.longitude = lon
+                        
                         let coord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, lon)
                         print(coord)
                         
@@ -141,12 +148,36 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 //On error, invoke `completion` with NSError.
                 callBack?(data: nil, response: response, error: returnedError)
             }
-
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.performSegueWithIdentifier("segueVC2", sender: self)
+            })
+            
         }
         
         task.resume()
+        
+        
     }
     
+        override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
+            if (segue.identifier=="segueVC2")
+            {
+                let destinationVC = segue.destinationViewController as! ViewController2
+
+                destinationVC.textForLat = self.latitude
+                destinationVC.textForLon = self.longitude
+                
+//                destinationVC.givenLat = self.lat
+//                destinationVC.givenLon = self.lon
+//    
+//                print("*******")
+//                print(self.lat)
+//                print("*******")
+                
+            }
+        }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

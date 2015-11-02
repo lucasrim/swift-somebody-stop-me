@@ -16,6 +16,7 @@
 		E07CBC181BE4006C005A0C38 /* SomebodyStopMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07CBC171BE4006C005A0C38 /* SomebodyStopMeUITests.swift */; };
 		E07CBC261BE40334005A0C38 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E07CBC251BE40334005A0C38 /* CoreLocation.framework */; };
 		E07CBC281BE42652005A0C38 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E07CBC271BE42652005A0C38 /* Default-568h@2x.png */; };
+		E0CC48161BE7CE920015CB7A /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC48151BE7CE920015CB7A /* ViewController2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		E07CBC191BE4006C005A0C38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E07CBC251BE40334005A0C38 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E07CBC271BE42652005A0C38 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E0CC48151BE7CE920015CB7A /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				E07CBBF71BE4006C005A0C38 /* AppDelegate.swift */,
+				E0CC48151BE7CE920015CB7A /* ViewController2.swift */,
 				E07CBBF91BE4006C005A0C38 /* ViewController.swift */,
 				E07CBBFB1BE4006C005A0C38 /* Main.storyboard */,
 				E07CBBFE1BE4006C005A0C38 /* Assets.xcassets */,
@@ -269,6 +272,7 @@
 			files = (
 				E07CBBFA1BE4006C005A0C38 /* ViewController.swift in Sources */,
 				E07CBBF81BE4006C005A0C38 /* AppDelegate.swift in Sources */,
+				E0CC48161BE7CE920015CB7A /* ViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
