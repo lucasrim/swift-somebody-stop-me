@@ -35,6 +35,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func regionMonitoring(sender: AnyObject) {
         manager?.requestAlwaysAuthorization()
+        print("test2")
         let currentRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 1000, identifier: "Test")
         manager?.startMonitoringForRegion(currentRegion)
         
@@ -77,11 +78,12 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion!){
+    func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!){
         NSLog("Your bus stop is approaching.")
-        let entryNotification = UILocalNotification()
-        entryNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
+        var entryNotification = UILocalNotification()
+        entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
         entryNotification.alertBody = "Your bus stop is approaching. Be prepared to get off the bus shortly."
+        entryNotification.soundName = "SomebodyStopMeBell.aiff"
         entryNotification.timeZone = NSTimeZone.defaultTimeZone()
         entryNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         
@@ -90,10 +92,11 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion!){
-        NSLog("This is a test to see if we are cooking with gas.")
-        let exitNotification = UILocalNotification()
-        exitNotification.alertBody = "Test, test, test."
+    func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!){
+        NSLog("Have you missed your stop?")
+        var exitNotification = UILocalNotification()
+        exitNotification.alertBody = "Oh no, have you missed your stop?"
+        exitNotification.soundName = "SomebodyStopMeBell.aiff"
         exitNotification.timeZone = NSTimeZone.defaultTimeZone()
         exitNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         
@@ -102,7 +105,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError!){
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!){
         NSLog("Something has gone terribly wrong.")
     }
 }
