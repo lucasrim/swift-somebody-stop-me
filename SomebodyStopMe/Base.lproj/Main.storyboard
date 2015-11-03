@@ -128,7 +128,7 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HrU-pW-yL6">
                                 <rect key="frame" x="79" y="505" width="164" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Start Monitoring Region"/>
+                                <state key="normal" title="Show Destination"/>
                                 <connections>
                                     <action selector="regionMonitoring:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3bD-xV-Cdw"/>
                                     <action selector="regionMonitoring:" destination="mUJ-Y3-dmc" eventType="touchUpInside" id="dgd-Xt-ZQB"/>
@@ -141,7 +141,7 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unG-oP-Wfc">
                                 <rect key="frame" x="71" y="467" width="180" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Get Your Current Location"/>
+                                <state key="normal" title="Show Current Location"/>
                                 <connections>
                                     <action selector="getLocation:" destination="mUJ-Y3-dmc" eventType="touchUpInside" id="e4D-Qn-hWy"/>
                                 </connections>
