@@ -4,12 +4,12 @@ Somebody Stop Me is a mobile app that notifies you when your bus stop is approac
 
 ## Team Members
 
-Brian Mock
-Dana Sweet
-Linas Mikalcius
-Lucas Rim
-Sheena Bryant
+Brian Mock   
+Dana Sweet   
+Linas Mikalcius   
+Lucas Rim   
+Sheena Bryant   
 
 ## Frameworks and Resources
 
-Built in Swift
+Built in Swift   
