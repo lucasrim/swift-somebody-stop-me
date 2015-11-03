@@ -191,7 +191,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         return false
     }
 
-
+//    
+//    var favorites = NSUserDefaults.standardUserDefaults()
+//        favorites.setValue(destinationField, forKey: "address")
+//        favorites.setValue(busLineField, forKey: "bus")
+//    
 
 }
 
