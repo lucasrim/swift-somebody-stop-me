@@ -30,7 +30,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         self.locationManager.startUpdatingLocation()
         self.busLineField.delegate = self;
         self.destinationField.delegate = self;
-
+        self.destinationField.autocapitalizationType = .Words
     }
 
     @IBAction func findMeButton(sender: AnyObject) {
