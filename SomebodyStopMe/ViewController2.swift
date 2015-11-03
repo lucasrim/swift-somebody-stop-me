@@ -17,6 +17,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     
     @IBOutlet weak var onnscreenMap: MKMapView!
     @IBOutlet weak var address: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         manager = CLLocationManager()
