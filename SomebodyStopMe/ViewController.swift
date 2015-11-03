@@ -196,12 +196,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
-
-//    
-//    var favorites = NSUserDefaults.standardUserDefaults()
-//        favorites.setValue(destinationField, forKey: "address")
-//        favorites.setValue(busLineField, forKey: "bus")
-//    
+ 
 
 }
 
