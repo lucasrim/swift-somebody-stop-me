@@ -28,8 +28,6 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         manager?.startMonitoringForRegion(currentRegion)
         let location = CLLocation(latitude: latitude as CLLocationDegrees, longitude: longitude as CLLocationDegrees)
         addRadiusCircle(location)
-        let mapRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2D(latitude: latitude, longitude: longitude), 2000, 2000)
-        self.onnscreenMap.setRegion(mapRegion, animated: true)
     }
 
     func addRadiusCircle(location: CLLocation){
@@ -63,7 +61,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         print("test2")
 //        let currentRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 1000, identifier: "Test")
 //        manager?.startMonitoringForRegion(currentRegion)
-        let mapRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2D(latitude: latitude, longitude: longitude), 2000, 2000)
+        let mapRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2D(latitude: latitude, longitude: longitude), 3000, 3000)
         self.onnscreenMap.setRegion(mapRegion, animated: true)
     }
 
