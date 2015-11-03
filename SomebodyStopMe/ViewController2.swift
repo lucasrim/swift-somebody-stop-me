@@ -28,6 +28,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         manager?.startMonitoringForRegion(currentRegion)
         let location = CLLocation(latitude: latitude as CLLocationDegrees, longitude: longitude as CLLocationDegrees)
         addRadiusCircle(location)
+        
     }
 
     func addRadiusCircle(location: CLLocation){
