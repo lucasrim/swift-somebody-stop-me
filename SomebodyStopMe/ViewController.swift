@@ -47,6 +47,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     
     
     @IBAction func trackRouteButton(sender: AnyObject) {
+        self.destinationField.resignFirstResponder()
+        self.busLineField.resignFirstResponder()
         setCoordinates() { data, response, error in
             if error != nil {
                 if error.domain == NSURLErrorDomain && error.code == NSURLErrorTimedOut {
@@ -189,6 +191,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
 //    

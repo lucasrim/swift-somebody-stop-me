@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController2: UIViewController, CLLocationManagerDelegate {
+class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     var manager: CLLocationManager?
     var latitude: Double = 0.0
     var longitude: Double = 0.0
@@ -26,9 +26,30 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         manager?.startUpdatingLocation()
         let currentRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 700, identifier: "Test")
         manager?.startMonitoringForRegion(currentRegion)
+        let location = CLLocation(latitude: latitude as CLLocationDegrees, longitude: longitude as CLLocationDegrees)
+        addRadiusCircle(location)
     }
-    
-    
+
+    func addRadiusCircle(location: CLLocation){
+        self.onnscreenMap.delegate = self
+        let circle = MKCircle(centerCoordinate: location.coordinate, radius: 700 as CLLocationDistance)
+        self.onnscreenMap.addOverlay(circle)
+    }
+
+    func mapView(onnscreenMap: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer! {
+        if overlay is MKCircle {
+            let circle = MKCircleRenderer(overlay: overlay)
+            circle.strokeColor = UIColor.redColor()
+            circle.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.1)
+            circle.lineWidth = 1
+            return circle
+        }
+        else {
+            return nil
+        }
+    }
+
+
     @IBAction func getLocation(sender: AnyObject) {
         manager?.requestWhenInUseAuthorization()
         manager?.startUpdatingLocation()
@@ -38,9 +59,10 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
     @IBAction func regionMonitoring(sender: AnyObject) {
         manager?.requestAlwaysAuthorization()
         print("test2")
-        let currentRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 1000, identifier: "Test")
-        manager?.startMonitoringForRegion(currentRegion)
-        
+//        let currentRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 1000, identifier: "Test")
+//        manager?.startMonitoringForRegion(currentRegion)
+        let mapRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2D(latitude: latitude, longitude: longitude), 3000, 3000)
+        self.onnscreenMap.setRegion(mapRegion, animated: true)
     }
 
     
