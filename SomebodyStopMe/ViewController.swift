@@ -173,8 +173,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
-
-
+ 
 
 }
 
