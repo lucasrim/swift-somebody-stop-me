@@ -66,7 +66,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
             
             self.onnscreenMap.centerCoordinate = location.coordinate
             
-            let addr = loc.locality
+            let addr = loc.thoroughfare
             
             self.address.text = addr
             
