@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -125,32 +125,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1N-7y-bTF">
-                                <rect key="frame" x="266" y="12" width="149" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HrU-pW-yL6">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HrU-pW-yL6">
                                 <rect key="frame" x="219" y="537" width="163" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Start Monitoring Region"/>
                                 <connections>
                                     <action selector="regionMonitoring:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3bD-xV-Cdw"/>
                                     <action selector="regionMonitoring:" destination="mUJ-Y3-dmc" eventType="touchUpInside" id="dgd-Xt-ZQB"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LKW-2P-oH6">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LKW-2P-oH6">
                                 <rect key="frame" x="0.0" y="34" width="600" height="437"/>
+                                <animations/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unG-oP-Wfc">
-                                <rect key="frame" x="200" y="499" width="179" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unG-oP-Wfc">
+                                <rect key="frame" x="211" y="499" width="179" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Get Your Current Location"/>
                                 <connections>
                                     <action selector="getLocation:" destination="mUJ-Y3-dmc" eventType="touchUpInside" id="e4D-Qn-hWy"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1N-7y-bTF">
+                                <rect key="frame" x="134" y="11" width="333" height="22"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="333" id="TMI-uY-UbQ"/>
+                                    <constraint firstAttribute="height" constant="22" id="tcn-mq-wva"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="LKW-2P-oH6" secondAttribute="trailing" id="65V-Lh-Vvb"/>
+                            <constraint firstItem="6fO-Sl-jWP" firstAttribute="top" secondItem="HrU-pW-yL6" secondAttribute="bottom" constant="33" id="ADj-mp-THP"/>
+                            <constraint firstItem="unG-oP-Wfc" firstAttribute="centerX" secondItem="HrU-pW-yL6" secondAttribute="centerX" id="B5w-Sj-hgG"/>
+                            <constraint firstItem="LKW-2P-oH6" firstAttribute="centerX" secondItem="unG-oP-Wfc" secondAttribute="centerX" id="Bzp-5C-evl"/>
+                            <constraint firstItem="LKW-2P-oH6" firstAttribute="centerX" secondItem="M1N-7y-bTF" secondAttribute="centerX" id="DOY-BT-V5x"/>
+                            <constraint firstItem="unG-oP-Wfc" firstAttribute="top" secondItem="LKW-2P-oH6" secondAttribute="bottom" constant="28" id="R6J-US-OFo"/>
+                            <constraint firstItem="HrU-pW-yL6" firstAttribute="top" secondItem="unG-oP-Wfc" secondAttribute="bottom" constant="8" symbolic="YES" id="dwp-u2-RNQ"/>
+                            <constraint firstItem="M1N-7y-bTF" firstAttribute="top" secondItem="N8V-kR-sfr" secondAttribute="topMargin" constant="11" id="eKF-WM-f42"/>
+                            <constraint firstItem="LKW-2P-oH6" firstAttribute="top" secondItem="M1N-7y-bTF" secondAttribute="bottom" constant="1" id="g32-cA-Aix"/>
+                            <constraint firstItem="LKW-2P-oH6" firstAttribute="leading" secondItem="N8V-kR-sfr" secondAttribute="leading" id="oz8-70-h77"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="address" destination="M1N-7y-bTF" id="TDg-ft-Xnj"/>

@@ -24,7 +24,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         manager?.desiredAccuracy = kCLLocationAccuracyBest
         manager?.requestAlwaysAuthorization()
         manager?.startUpdatingLocation()
-        let currentRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 1000, identifier: "Test")
+        let currentRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 700, identifier: "Test")
         manager?.startMonitoringForRegion(currentRegion)
     }
     
@@ -65,8 +65,8 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
             let loc: CLPlacemark = placeMarks[0]
             
             self.onnscreenMap.centerCoordinate = location.coordinate
-            
-            let addr = loc.locality
+        
+            let addr = loc.thoroughfare
             
             self.address.text = addr
             
