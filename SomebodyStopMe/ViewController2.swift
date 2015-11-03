@@ -87,7 +87,6 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         entryNotification.alertBody = "Your bus stop is approaching. Be prepared to get off the bus shortly."
         entryNotification.soundName = "SomebodyStopMeBell.aiff"
         entryNotification.timeZone = NSTimeZone.defaultTimeZone()
-        entryNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         
         UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
         print("test4")
@@ -100,7 +99,6 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         exitNotification.alertBody = "Oh no, have you missed your stop?"
         exitNotification.soundName = "SomebodyStopMeBell.aiff"
         exitNotification.timeZone = NSTimeZone.defaultTimeZone()
-        exitNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         
         UIApplication.sharedApplication().scheduleLocalNotification(exitNotification)
         print("test5")
