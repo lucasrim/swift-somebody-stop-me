@@ -30,15 +30,8 @@
                                     <constraint firstAttribute="width" constant="110" id="l0a-xZ-H9Q"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Somebody Stop Me-2" translatesAutoresizingMaskIntoConstraints="NO" id="rrB-Rk-awe">
-                                <rect key="frame" x="32" y="157" width="248" height="38"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="LvS-Mt-66J"/>
-                                    <constraint firstAttribute="width" constant="247" id="kks-zL-D8b"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7j-3e-VuO">
-                                <rect key="frame" x="8" y="357" width="296" height="60"/>
+                                <rect key="frame" x="12" y="348" width="296" height="60"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.87450980392156863" green="0.17647058823529413" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -55,7 +48,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Destination Address" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iAN-AO-2ac">
-                                <rect key="frame" x="8" y="232" width="296" height="50"/>
+                                <rect key="frame" x="12" y="232" width="296" height="50"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="7Yt-wk-gGG"/>
@@ -65,7 +58,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Bus Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jdy-aa-34D">
-                                <rect key="frame" x="8" y="295" width="296" height="50"/>
+                                <rect key="frame" x="12" y="290" width="296" height="50"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="295" id="82F-Ns-NIB"/>
@@ -75,6 +68,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Somebody Stop Me-2" translatesAutoresizingMaskIntoConstraints="NO" id="rrB-Rk-awe">
+                                <rect key="frame" x="36" y="158" width="248" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="LvS-Mt-66J"/>
+                                    <constraint firstAttribute="width" constant="247" id="kks-zL-D8b"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
