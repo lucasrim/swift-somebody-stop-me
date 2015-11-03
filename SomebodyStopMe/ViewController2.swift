@@ -24,6 +24,8 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         manager?.desiredAccuracy = kCLLocationAccuracyBest
         manager?.requestAlwaysAuthorization()
         manager?.startUpdatingLocation()
+        let currentRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 1000, identifier: "Test")
+        manager?.startMonitoringForRegion(currentRegion)
     }
     
     

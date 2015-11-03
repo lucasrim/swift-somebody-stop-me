@@ -4,6 +4,8 @@
 <dict>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>App needs location services</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>App needs location services</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -26,6 +28,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>location</string>
+    </array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
