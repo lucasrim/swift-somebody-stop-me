@@ -33,7 +33,7 @@
                                     <constraint firstAttribute="width" constant="110" id="l0a-xZ-H9Q"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7j-3e-VuO">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7j-3e-VuO">
                                 <rect key="frame" x="13" y="347" width="295" height="60"/>
                                 <color key="backgroundColor" red="0.87450980392156863" green="0.17647058823529413" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -50,7 +50,7 @@
                                     <action selector="trackRouteButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fm5-Pn-Ril"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Destination Address" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iAN-AO-2ac">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Destination Address" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iAN-AO-2ac">
                                 <rect key="frame" x="13" y="231" width="295" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="7Yt-wk-gGG"/>
@@ -60,7 +60,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Bus Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jdy-aa-34D">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Bus Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jdy-aa-34D">
                                 <rect key="frame" x="13" y="289" width="295" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="295" id="82F-Ns-NIB"/>
@@ -85,15 +85,21 @@
                             <constraint firstItem="FzU-dZ-OVS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="HVr-fb-gLF"/>
                             <constraint firstItem="iAN-AO-2ac" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JTq-Vv-Kq8"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="w2U-fo-dcX" secondAttribute="bottom" id="K3v-rJ-oNM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iAN-AO-2ac" secondAttribute="trailing" constant="-8" id="M0O-QR-5GD"/>
                             <constraint firstItem="FzU-dZ-OVS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="M84-av-1ia"/>
                             <constraint firstItem="rrB-Rk-awe" firstAttribute="top" secondItem="FzU-dZ-OVS" secondAttribute="bottom" constant="8" id="N1F-lp-Ewc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j7j-3e-VuO" secondAttribute="trailing" constant="-8" id="UDv-ED-FJz"/>
                             <constraint firstItem="rrB-Rk-awe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Uck-Gh-WZT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="w2U-fo-dcX" secondAttribute="trailing" constant="-24" id="WM0-1u-Ey6"/>
+                            <constraint firstItem="j7j-3e-VuO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-7" id="YfH-ab-ehP"/>
+                            <constraint firstItem="iAN-AO-2ac" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-7" id="bKC-bz-ftu"/>
                             <constraint firstItem="j7j-3e-VuO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d1v-Of-VL6"/>
                             <constraint firstItem="Jdy-aa-34D" firstAttribute="top" secondItem="iAN-AO-2ac" secondAttribute="bottom" constant="8" id="d8z-26-dhx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jdy-aa-34D" secondAttribute="trailing" constant="-8" id="dzo-FY-xi8"/>
                             <constraint firstItem="iAN-AO-2ac" firstAttribute="top" secondItem="rrB-Rk-awe" secondAttribute="bottom" constant="36" id="gC5-Bb-kp1"/>
                             <constraint firstItem="w2U-fo-dcX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="nkn-gJ-4BA"/>
                             <constraint firstItem="j7j-3e-VuO" firstAttribute="top" secondItem="Jdy-aa-34D" secondAttribute="bottom" constant="8" id="nue-Bm-hga"/>
+                            <constraint firstItem="Jdy-aa-34D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-7" id="rpa-wF-tDw"/>
                             <constraint firstItem="Jdy-aa-34D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tZG-8N-ziW"/>
                         </constraints>
                     </view>
