@@ -121,6 +121,8 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!){
         NSLog("Your bus stop is approaching.")
         
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+        
         let entryAlert = UIAlertController(title: "Bus Stop Is Approaching", message: "You'll need to get off the bus soon.", preferredStyle: UIAlertControllerStyle.Alert)
         
         let okay = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
@@ -144,7 +146,8 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!){
         NSLog("Have you missed your stop?")
-        //var exitNotification = UIAlertController(title: "Test", message: "This is a test." , preferredStyle: .Alert);
+        
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         
         let exitAlert = UIAlertController(title: "Oh No!", message: "If you are still on the bus, you may have missed your stop.", preferredStyle: UIAlertControllerStyle.Alert)
         
