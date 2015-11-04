@@ -7,6 +7,9 @@
             Xcode will simulate a route visitng each waypoint.
      -->
     <wpt lat="41.891197" lon="-87.647640">
+        <time>2014-09-24T14:54:37Z</time>
+    </wpt>
+    <wpt lat="41.891197" lon="-87.627640">
          <name>Grand</name>
          
          <!--   
