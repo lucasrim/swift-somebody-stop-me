@@ -21,6 +21,7 @@
 		E0CC48161BE7CE920015CB7A /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC48151BE7CE920015CB7A /* ViewController2.swift */; };
 		EBD189CD1BEA674100350836 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD189CC1BEA674100350836 /* AVFoundation.framework */; };
 		EBD189CF1BEAA99B00350836 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD189CE1BEAA99B00350836 /* AudioToolbox.framework */; };
+		EBD189D11BEAC2BC00350836 /* TrainHorn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EBD189D01BEAC2BC00350836 /* TrainHorn.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		E0CC48151BE7CE920015CB7A /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		EBD189CC1BEA674100350836 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EBD189CE1BEAA99B00350836 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		EBD189D01BEAC2BC00350836 /* TrainHorn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TrainHorn.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		E07CBBF61BE4006C005A0C38 /* SomebodyStopMe */ = {
 			isa = PBXGroup;
 			children = (
+				EBD189D01BEAC2BC00350836 /* TrainHorn.mp3 */,
 				520840781BE845D100B367A0 /* default.gpx */,
 				520840791BE845D100B367A0 /* SomebodyStopMeBell.aiff */,
 				E07CBBF71BE4006C005A0C38 /* AppDelegate.swift */,
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E07CBC021BE4006C005A0C38 /* LaunchScreen.storyboard in Resources */,
+				EBD189D11BEAC2BC00350836 /* TrainHorn.mp3 in Resources */,
 				E07CBC281BE42652005A0C38 /* Default-568h@2x.png in Resources */,
 				E07CBBFF1BE4006C005A0C38 /* Assets.xcassets in Resources */,
 				E07CBBFD1BE4006C005A0C38 /* Main.storyboard in Resources */,
