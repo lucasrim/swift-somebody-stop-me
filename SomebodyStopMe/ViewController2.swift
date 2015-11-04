@@ -17,6 +17,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     
     @IBOutlet weak var onnscreenMap: MKMapView!
     @IBOutlet weak var address: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         manager = CLLocationManager()
@@ -28,7 +29,11 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         manager?.startMonitoringForRegion(currentRegion)
         let location = CLLocation(latitude: latitude as CLLocationDegrees, longitude: longitude as CLLocationDegrees)
         addRadiusCircle(location)
-        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        onnscreenMap.addAnnotation(annotation)
+
+     
     }
 
     func addRadiusCircle(location: CLLocation){

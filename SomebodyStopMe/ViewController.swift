@@ -13,8 +13,6 @@ import MapKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
 
-    @IBOutlet weak var currentLocationLabel: UILabel!
-
     let locationManager = CLLocationManager()
 
     @IBOutlet weak var destinationField: UITextField!
@@ -31,15 +29,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         self.busLineField.delegate = self;
         self.destinationField.delegate = self;
         self.destinationField.autocapitalizationType = .Words
-        
-    }
-
-    @IBAction func findMeButton(sender: AnyObject) {
-        let myLat = String(locationManager.location!.coordinate.latitude)
-        let myLong = String(locationManager.location!.coordinate.longitude)
-        let myCoordinates = "\(myLat), \(myLong)"
-        
-        currentLocationLabel.text = myCoordinates
         
     }
     
@@ -60,7 +49,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     }
     
     func setCoordinates(callBack: ((data: NSDictionary!, response: NSURLResponse!, error: NSError!) -> Void)?) {
-        var jsonData: NSDictionary = Dictionary<String,String>()
+        var jsonData: NSDictionary = Dictionary<String,String>() //declaring key/value pair as strings
         
         let destination = destinationField.text!
         
@@ -83,14 +72,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         
         let requestBodyData = (data as NSString).dataUsingEncoding(NSUTF8StringEncoding)
         
-        let postLength = String(requestBodyData!.length)
+        let postLength = String(requestBodyData!.length) //need the length of the content in the http request
         
         request.HTTPBody = requestBodyData
         request.setValue(postLength, forHTTPHeaderField: "Content-Length")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
-        let session = NSURLSession.sharedSession()
+        let session = NSURLSession.sharedSession() //opening a browser action
         let task = session.dataTaskWithRequest(request) {urlData, response, responseError in
             if let receivedData = urlData {
                 let res = response as! NSHTTPURLResponse!;
@@ -108,18 +97,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
                         let coord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, lon)
                         print(coord)
                         
-//                        let distance:Double = 100000
-                        
-//                        while distance > 300 {
-//                            var currentLat:Double = Double(self.locationManager.location!.coordinate.latitude)
-//                            var currentLon:Double = Double(self.locationManager.location!.coordinate.longitude)
-//                            var currentCoord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(currentLat, currentLon)
-//                            var point1: MKMapPoint = MKMapPointForCoordinate(coord)
-//                            var point2: MKMapPoint = MKMapPointForCoordinate(currentCoord)
-//                            var distance: CLLocationDistance = MKMetersBetweenMapPoints(point1, point2)
-//                            print(distance)
-//                            
-//                        }
                         
                         //On success, invoke `completion` with passing jsonData.
                         callBack?(data: jsonData, response: response, error: nil)
@@ -166,7 +143,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     
         override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
-            if (segue.identifier=="segueVC2")
+            if (segue.identifier=="segueVC2") //identifying the particular segue
             {
                 let destinationVC = segue.destinationViewController as! ViewController2
 
@@ -197,8 +174,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
-
-
+ 
 
 }
 
