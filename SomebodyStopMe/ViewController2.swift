@@ -20,20 +20,32 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         manager = CLLocationManager()
         manager?.delegate = self;
         manager?.desiredAccuracy = kCLLocationAccuracyBest
         manager?.requestAlwaysAuthorization()
         manager?.startUpdatingLocation()
+        
         let currentRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 700, identifier: "Test")
+        let smallerRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 350, identifier: "Test Smaller Region")
+        
         manager?.startMonitoringForRegion(currentRegion)
+        manager?.startMonitoringForRegion(smallerRegion)
+        
+        // bus stop location
+        
         let location = CLLocation(latitude: latitude as CLLocationDegrees, longitude: longitude as CLLocationDegrees)
         addRadiusCircle(location)
+        let smallerLocation = CLLocation(latitude: latitude as CLLocationDegrees, longitude: longitude as CLLocationDegrees)
+        addSmallerRadiusCircle(smallerLocation)
+        
+        // adds pin
+        
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         onnscreenMap.addAnnotation(annotation)
-
-     
+        
     }
 
     func addRadiusCircle(location: CLLocation){
@@ -41,7 +53,13 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         let circle = MKCircle(centerCoordinate: location.coordinate, radius: 700 as CLLocationDistance)
         self.onnscreenMap.addOverlay(circle)
     }
-
+    
+    func addSmallerRadiusCircle(location: CLLocation){
+        self.onnscreenMap.delegate = self
+        let smallerCircle = MKCircle(centerCoordinate: location.coordinate, radius: 350 as CLLocationDistance)
+        self.onnscreenMap.addOverlay(smallerCircle)
+    }
+    
     func mapView(onnscreenMap: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer! {
         if overlay is MKCircle {
             let circle = MKCircleRenderer(overlay: overlay)
@@ -65,8 +83,6 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     @IBAction func regionMonitoring(sender: AnyObject) {
         manager?.requestAlwaysAuthorization()
         print("test2")
-//        let currentRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 1000, identifier: "Test")
-//        manager?.startMonitoringForRegion(currentRegion)
         let mapRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2D(latitude: latitude, longitude: longitude), 3000, 3000)
         self.onnscreenMap.setRegion(mapRegion, animated: true)
     }
@@ -74,18 +90,15 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        // collects current locations
+        
         manager.stopUpdatingLocation()
-        
         let location = locations[0] as CLLocation
-        
         let geoCoder = CLGeocoder()
-        
         geoCoder.reverseGeocodeLocation(location, completionHandler: { (data, error) -> Void in
             
             let placeMarks = data ?? []
@@ -108,33 +121,51 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         
     }
     
+
+    
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!){
-        NSLog("Your bus stop is approaching.")
+        if region == CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 700, identifier: "Test") {
         
-        let entryAlert = UIAlertController(title: "Bus Stop Is Approaching", message: "Be prepared to exit the bus shortly.", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        let okay = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
-        entryAlert.addAction(okay)
-       
-        self.presentViewController(entryAlert, animated: true, completion: nil)
-      
-        
-        var entryNotification = UILocalNotification()
-        entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
-        entryNotification.alertBody = "Your bus stop is approaching. Be prepared to get off the bus shortly."
-        entryNotification.soundName = "SomebodyStopMeBell.aiff"
-        entryNotification.timeZone = NSTimeZone.defaultTimeZone()
-        entryNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
-        
-        UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
-        print("test4")
-        
-        
-}
+            NSLog("Your bus stop is approaching.")
+            
+            let entryAlert = UIAlertController(title: "Bus Stop Is Approaching", message: "Be prepared to exit the bus shortly.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let okay = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
+            entryAlert.addAction(okay)
+           
+            self.presentViewController(entryAlert, animated: true, completion: nil)
+          
+            
+            var entryNotification = UILocalNotification()
+            entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
+            entryNotification.alertBody = "Your bus stop is approaching. Be prepared to get off the bus shortly."
+            entryNotification.soundName = "SomebodyStopMeBell.aiff"
+            entryNotification.timeZone = NSTimeZone.defaultTimeZone()
+            UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
+            
+        } else if region == CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 350, identifier: "Test Smaller Region")
+            {
+                NSLog("Your bus stop is RIGHT NOW.")
+                
+                let entryAlert = UIAlertController(title: "Bus Stop Is RIGHT NOW", message: "LEAVE.", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                let okay = UIAlertAction(title: "GET OFF THE BUS", style: UIAlertActionStyle.Default, handler: nil)
+                entryAlert.addAction(okay)
+                
+                self.presentViewController(entryAlert, animated: true, completion: nil)
+                
+                var entryNotification = UILocalNotification()
+                entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
+                entryNotification.alertBody = "GET OFF THE BUSS."
+                entryNotification.soundName = "SomebodyStopMeBell.aiff"
+                entryNotification.timeZone = NSTimeZone.defaultTimeZone()
+                UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
+
+            }
+    }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!){
         NSLog("Have you missed your stop?")
-        //var exitNotification = UIAlertController(title: "Test", message: "This is a test." , preferredStyle: .Alert);
         
         let exitAlert = UIAlertController(title: "Oh No!", message: "If you are still on the bus, you missed your stop.", preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -153,7 +184,6 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         UIApplication.sharedApplication().scheduleLocalNotification(exitNotification)
         print("test5")
 
-        
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!){
