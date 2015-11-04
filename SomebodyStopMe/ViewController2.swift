@@ -156,11 +156,10 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
                 
                 var entryNotification = UILocalNotification()
                 entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
-                entryNotification.alertBody = "GET OFF THE BUSS."
-                entryNotification.soundName = "SomebodyStopMeBell.aiff"
+                entryNotification.alertBody = "GET OFF THE BUS."
+                entryNotification.soundName = "TrainHorn.mp3"
                 entryNotification.timeZone = NSTimeZone.defaultTimeZone()
                 UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
-
             }
     }
     
@@ -179,7 +178,6 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         exitNotification.alertBody = "Oh no, have you missed your stop?"
         exitNotification.soundName = "SomebodyStopMeBell.aiff"
         exitNotification.timeZone = NSTimeZone.defaultTimeZone()
-        exitNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         
         UIApplication.sharedApplication().scheduleLocalNotification(exitNotification)
         print("test5")
