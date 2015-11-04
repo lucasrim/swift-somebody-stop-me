@@ -121,15 +121,14 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!){
         NSLog("Your bus stop is approaching.")
         
+        audioPlayer.play()
+        
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         
         let entryAlert = UIAlertController(title: "Bus Stop Is Approaching", message: "You'll need to get off the bus soon.", preferredStyle: UIAlertControllerStyle.Alert)
         
         let okay = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
         entryAlert.addAction(okay)
-        
-        audioPlayer.play()
-
         self.presentViewController(entryAlert, animated: true, completion: nil)
         
         var entryNotification = UILocalNotification()
