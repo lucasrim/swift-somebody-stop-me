@@ -29,6 +29,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         self.busLineField.delegate = self;
         self.destinationField.delegate = self;
         self.destinationField.autocapitalizationType = .Words
+        
     }
     
     var latitude : Double = 0.0
