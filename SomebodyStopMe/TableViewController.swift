@@ -18,8 +18,7 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
 //        locations["home"] = [41.631000,-87.132323]
 //        locations["work"] = [35.024309,-86.204324]
-//      let location = ["Home" : [41.631000,-87.132323]]
-//      NSUserDefaults.standardUserDefaults().setObject(location, forKey: "favorites")
+//      self.locations["Work"] = [42.631000,-88.132323]
       
       if NSUserDefaults.standardUserDefaults().objectForKey("favorites") != nil {
       
