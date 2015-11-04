@@ -194,7 +194,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
                 var entryNotification = UILocalNotification()
                 entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
                 entryNotification.alertBody = "GET OFF THE BUS."
-                entryNotification.soundName = "TrainHorn.mp3"
+                entryNotification.soundName = "SomebodyStopMeBell.aiff"
                 entryNotification.timeZone = NSTimeZone.defaultTimeZone()
                 UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
             }
