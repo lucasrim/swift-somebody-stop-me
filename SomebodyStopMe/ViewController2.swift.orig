@@ -12,6 +12,9 @@ import CoreLocation
 import AVFoundation
 
 class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    
+    
+    
     var manager: CLLocationManager?
     var latitude: Double = 0.0
     var longitude: Double = 0.0
@@ -52,8 +55,11 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         onnscreenMap.addAnnotation(annotation)
         
+<<<<<<< HEAD
+=======
         try! audioPlayer = AVAudioPlayer(contentsOfURL: audioUrl)
         
+>>>>>>> master
     }
 
     func addRadiusCircle(location: CLLocation){
@@ -105,11 +111,8 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         // collects current locations
         
         manager.stopUpdatingLocation()
-        
         let location = locations[0] as CLLocation
-        
         let geoCoder = CLGeocoder()
-        
         geoCoder.reverseGeocodeLocation(location, completionHandler: { (data, error) -> Void in
             
             let placeMarks = data ?? []
@@ -135,6 +138,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
 
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!){
+<<<<<<< HEAD
         if region == CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 700, identifier: "Test") {
         
             NSLog("Your bus stop is approaching.")
@@ -173,6 +177,30 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
                 UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
             }
     }
+=======
+        NSLog("Your bus stop is approaching.")
+        
+        let entryAlert = UIAlertController(title: "Bus Stop Is Approaching", message: "You'll need to get off the bus soon.", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let okay = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
+        entryAlert.addAction(okay)
+        
+        audioPlayer.play()
+
+        self.presentViewController(entryAlert, animated: true, completion: nil)
+        
+        var entryNotification = UILocalNotification()
+        entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
+        entryNotification.alertBody = "Your bus stop is approaching. Be prepared to get off the bus shortly."
+        entryNotification.soundName = "SomebodyStopMeBell.aiff"
+        entryNotification.timeZone = NSTimeZone.defaultTimeZone()
+        entryNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
+        print("test4")
+        
+}
+>>>>>>> master
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!){
         NSLog("Have you missed your stop?")
