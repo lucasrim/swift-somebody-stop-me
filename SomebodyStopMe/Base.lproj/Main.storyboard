@@ -18,7 +18,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
-                                <navigationItem title="Favorites" id="mjE-Ld-Hdf"/>
+                                <navigationItem title="Favorites" id="mjE-Ld-Hdf">
+                                    <barButtonItem key="leftBarButtonItem" title="Back" id="ii0-ZM-ZVF">
+                                        <inset key="imageInsets" minX="0.0" minY="29" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="modal" id="Qol-io-Q8Y"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
                             </items>
                         </navigationBar>
                         <prototypes>
@@ -114,21 +121,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Somebody Stop Me-2" translatesAutoresizingMaskIntoConstraints="NO" id="rrB-Rk-awe">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SomebodyStopMe-1" translatesAutoresizingMaskIntoConstraints="NO" id="rrB-Rk-awe">
                                 <rect key="frame" x="25" y="158" width="271" height="33"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="LvS-Mt-66J"/>
-                                    <constraint firstAttribute="width" constant="247" id="kks-zL-D8b"/>
+                                    <constraint firstAttribute="height" constant="33" id="LvS-Mt-66J"/>
+                                    <constraint firstAttribute="width" constant="271" id="kks-zL-D8b"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adL-CS-LMD">
-                                <rect key="frame" x="17" y="40" width="62" height="30"/>
-                                <state key="normal" title="Favorites"/>
-                                <connections>
-                                    <segue destination="aqX-Au-Vco" kind="modal" id="N3P-Rb-BAR"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-2" translatesAutoresizingMaskIntoConstraints="NO" id="FzU-dZ-OVS">
                                 <rect key="frame" x="105" y="40" width="110" height="110"/>
                                 <animations/>
@@ -139,6 +139,21 @@
                                     <constraint firstAttribute="width" constant="110" id="l0a-xZ-H9Q"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adL-CS-LMD">
+                                <rect key="frame" x="211" y="415" width="97" height="39"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="FwV-eF-z1U"/>
+                                    <constraint firstAttribute="height" constant="39" id="nIB-BC-KWW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Favorites">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="aqX-Au-Vco" kind="modal" id="N3P-Rb-BAR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -153,12 +168,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="j7j-3e-VuO" secondAttribute="trailing" constant="-8" id="UDv-ED-FJz"/>
                             <constraint firstItem="rrB-Rk-awe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Uck-Gh-WZT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="w2U-fo-dcX" secondAttribute="trailing" constant="-24" id="WM0-1u-Ey6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="adL-CS-LMD" secondAttribute="trailing" constant="-8" id="YN7-uH-f3P"/>
                             <constraint firstItem="j7j-3e-VuO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-7" id="YfH-ab-ehP"/>
                             <constraint firstItem="iAN-AO-2ac" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-7" id="bKC-bz-ftu"/>
                             <constraint firstItem="j7j-3e-VuO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d1v-Of-VL6"/>
                             <constraint firstItem="Jdy-aa-34D" firstAttribute="top" secondItem="iAN-AO-2ac" secondAttribute="bottom" constant="8" id="d8z-26-dhx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jdy-aa-34D" secondAttribute="trailing" constant="-8" id="dzo-FY-xi8"/>
-                            <constraint firstItem="iAN-AO-2ac" firstAttribute="top" secondItem="rrB-Rk-awe" secondAttribute="bottom" constant="36" id="gC5-Bb-kp1"/>
+                            <constraint firstItem="iAN-AO-2ac" firstAttribute="top" secondItem="rrB-Rk-awe" secondAttribute="bottom" constant="40" id="gC5-Bb-kp1"/>
+                            <constraint firstItem="adL-CS-LMD" firstAttribute="top" secondItem="j7j-3e-VuO" secondAttribute="bottom" constant="8" id="itb-KE-WNn"/>
                             <constraint firstItem="w2U-fo-dcX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="nkn-gJ-4BA"/>
                             <constraint firstItem="j7j-3e-VuO" firstAttribute="top" secondItem="Jdy-aa-34D" secondAttribute="bottom" constant="8" id="nue-Bm-hga"/>
                             <constraint firstItem="Jdy-aa-34D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-7" id="rpa-wF-tDw"/>
@@ -240,15 +257,18 @@
                                     <constraint firstAttribute="height" constant="16" id="09O-We-mrB"/>
                                     <constraint firstAttribute="width" constant="43" id="Utv-Nx-2oJ"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="back-2"/>
+                                <state key="normal" title="Back"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="modal" id="uAd-dK-cAg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vb-lT-wej">
-                                <rect key="frame" x="255" y="16" width="59" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Favorite"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vb-lT-wej">
+                                <rect key="frame" x="277" y="18" width="31" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="31" id="eJZ-fQ-KQS"/>
+                                    <constraint firstAttribute="height" constant="26" id="rbk-86-HrA"/>
+                                </constraints>
+                                <state key="normal" image="star-2"/>
                                 <connections>
                                     <action selector="createFavorite:" destination="mUJ-Y3-dmc" eventType="touchUpInside" id="Yyg-x1-RB1"/>
                                 </connections>
@@ -258,9 +278,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="unG-oP-Wfc" firstAttribute="top" secondItem="LKW-2P-oH6" secondAttribute="bottom" constant="13" id="1z8-ei-9tw"/>
+                            <constraint firstItem="LKW-2P-oH6" firstAttribute="top" secondItem="5vb-lT-wej" secondAttribute="bottom" constant="8" id="2KM-HK-FcB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LKW-2P-oH6" secondAttribute="trailing" constant="-20" id="3uN-k1-dv3"/>
                             <constraint firstItem="M1N-7y-bTF" firstAttribute="centerX" secondItem="N8V-kR-sfr" secondAttribute="centerX" id="8fj-V3-mnQ"/>
                             <constraint firstItem="HrU-pW-yL6" firstAttribute="top" secondItem="unG-oP-Wfc" secondAttribute="bottom" constant="10" id="8if-zq-aEC"/>
+                            <constraint firstItem="5vb-lT-wej" firstAttribute="centerY" secondItem="6nF-Pu-qAS" secondAttribute="centerY" id="8wy-Sp-Fy5"/>
                             <constraint firstItem="HrU-pW-yL6" firstAttribute="centerX" secondItem="N8V-kR-sfr" secondAttribute="centerX" id="9Bd-LC-pDL"/>
                             <constraint firstItem="6fO-Sl-jWP" firstAttribute="top" secondItem="LKW-2P-oH6" secondAttribute="bottom" constant="96" id="AC8-J0-N8d"/>
                             <constraint firstItem="6fO-Sl-jWP" firstAttribute="top" secondItem="HrU-pW-yL6" secondAttribute="bottom" constant="13" id="ADj-mp-THP"/>
@@ -272,7 +294,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="unG-oP-Wfc" secondAttribute="trailing" constant="50" id="RLv-Wb-Ebr"/>
                             <constraint firstItem="LKW-2P-oH6" firstAttribute="top" secondItem="6nF-Pu-qAS" secondAttribute="bottom" constant="13" id="VTW-Ja-Ugz"/>
                             <constraint firstItem="6fO-Sl-jWP" firstAttribute="top" secondItem="LKW-2P-oH6" secondAttribute="bottom" constant="96" id="W6J-YA-lV7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5vb-lT-wej" secondAttribute="trailing" constant="-10" id="XVq-fW-oz8"/>
                             <constraint firstItem="6nF-Pu-qAS" firstAttribute="top" secondItem="3Kh-I1-mAO" secondAttribute="bottom" constant="10" id="cD8-tB-bR4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5vb-lT-wej" secondAttribute="trailing" constant="-8" id="dnD-68-nld"/>
                             <constraint firstItem="HrU-pW-yL6" firstAttribute="top" secondItem="unG-oP-Wfc" secondAttribute="bottom" constant="10" id="dwp-u2-RNQ"/>
                             <constraint firstItem="LKW-2P-oH6" firstAttribute="top" secondItem="M1N-7y-bTF" secondAttribute="bottom" constant="4" id="efS-uM-NLw"/>
                             <constraint firstItem="HrU-pW-yL6" firstAttribute="leading" secondItem="N8V-kR-sfr" secondAttribute="leadingMargin" constant="50" id="hTx-3u-xF9"/>
@@ -292,12 +316,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Somebody Stop Me-2" width="639" height="73"/>
-        <image name="back-2" width="628" height="202"/>
+        <image name="SomebodyStopMe-1" width="679" height="81"/>
         <image name="chi-2" width="437" height="698"/>
         <image name="logo-2" width="848" height="848"/>
+        <image name="star-2" width="513" height="449"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Qol-io-Q8Y"/>
         <segue reference="lbB-d0-gxS"/>
     </inferredMetricsTieBreakers>
 </document>

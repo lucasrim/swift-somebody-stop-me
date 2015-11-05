@@ -21,7 +21,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     var locations = Dictionary<String, Array<Double>>()
     
     var audioPlayer = AVAudioPlayer()
-    var audioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("ShortBell", ofType: "aiff")!)
+    var audioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("SomebodyStopMeBell", ofType: "aiff")!)
 
 
     @IBAction func createFavorite(sender: UIButton) {
@@ -34,10 +34,23 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         let favName = alert.textFields![0].text as String!
         
         // Loading NSUserDefaults locations
-        self.locations = NSUserDefaults.standardUserDefaults().objectForKey("favorites")! as! NSDictionary as! Dictionary<String, Array<Double>>
+        if NSUserDefaults.standardUserDefaults().objectForKey("favorites") != nil {
+            self.locations = NSUserDefaults.standardUserDefaults().objectForKey("favorites")! as! NSDictionary as! Dictionary<String, Array<Double>>
+        }
         // Adding new favorite location to NSUserDefaults
         self.locations[favName] = [self.latitude,self.longitude]
         NSUserDefaults.standardUserDefaults().setObject(self.locations, forKey:"favorites")
+        
+        if favName != "" {
+        
+          // Loading NSUserDefaults locations
+          if NSUserDefaults.standardUserDefaults().objectForKey("favorites") != nil {
+            self.locations = NSUserDefaults.standardUserDefaults().objectForKey("favorites")! as! NSDictionary as! Dictionary<String, Array<Double>>
+          }
+          // Adding new favorite location to NSUserDefaults
+          self.locations[favName] = [self.latitude,self.longitude]
+          NSUserDefaults.standardUserDefaults().setObject(self.locations, forKey:"favorites")
+        }
         
       }))
       self.presentViewController(alert, animated: true, completion: nil)
@@ -210,9 +223,9 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
                 var innerAudioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("0342", ofType: "aiff")!)
                 innerAudioPlayer.play()
                 
-                let entryAlert = UIAlertController(title: "Bus Stop Is RIGHT NOW", message: "LEAVE.", preferredStyle: UIAlertControllerStyle.Alert)
+                let entryAlert = UIAlertController(title: "Bus Stop Is imminent", message: "Pull!", preferredStyle: UIAlertControllerStyle.Alert)
                 
-                let okay = UIAlertAction(title: "GET OFF THE BUS", style: UIAlertActionStyle.Default, handler: nil)
+                let okay = UIAlertAction(title: "The bus is arriving at your destination.", style: UIAlertActionStyle.Default, handler: nil)
                 entryAlert.addAction(okay)
                 
                 self.presentViewController(entryAlert, animated: true, completion: nil)
