@@ -216,7 +216,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         
         } else if region == CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 350, identifier: "Test Smaller Region")
             {
-                NSLog("Your bus stop is here.")
+                NSLog("Your bus stop is very near.")
                 
                 
                 var innerAudioPlayer = AVAudioPlayer()
@@ -225,15 +225,15 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
                 
                 let entryAlert = UIAlertController(title: "Bus Stop Is imminent", message: "Pull!", preferredStyle: UIAlertControllerStyle.Alert)
                 
-                let okay = UIAlertAction(title: "The bus is arriving at your destination.", style: UIAlertActionStyle.Default, handler: nil)
+                let okay = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil)
                 entryAlert.addAction(okay)
                 
                 self.presentViewController(entryAlert, animated: true, completion: nil)
                 
                 var entryNotification = UILocalNotification()
                 entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
-                entryNotification.alertBody = "GET OFF THE BUS."
-                entryNotification.soundName = "0342.aiff"
+                entryNotification.alertBody = "Prepare to leave immediately."
+                entryNotification.soundName = "SomebodyStopMeBell.aiff"
                 entryNotification.timeZone = NSTimeZone.defaultTimeZone()
                 UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
             }
