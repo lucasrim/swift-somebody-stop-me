@@ -197,7 +197,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             audioPlayer.play()
             
-            let entryAlert = UIAlertController(title: "Bus Stop Is Approaching", message: "You'll need to get off the bus soon.", preferredStyle: UIAlertControllerStyle.Alert)
+            let entryAlert = UIAlertController(title: "Your bus stop is approaching", message: "Be prepared to get off the bus shortly.", preferredStyle: UIAlertControllerStyle.Alert)
             
             let okay = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
 
@@ -208,7 +208,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         
             var entryNotification = UILocalNotification()
             entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
-            entryNotification.alertBody = "Your bus stop is approaching. Be prepared to get off the bus shortly."
+            entryNotification.alertBody = "Your bus stop is approaching, be prepared to get off the bus shortly."
             entryNotification.soundName = "ShortBell.aiff"
             entryNotification.timeZone = NSTimeZone.defaultTimeZone()
             entryNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
@@ -224,7 +224,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                 innerAudioPlayer.play()
                 
-                let entryAlert = UIAlertController(title: "Bus stop is imminent", message: "Pull!", preferredStyle: UIAlertControllerStyle.Alert)
+                let entryAlert = UIAlertController(title: "Your bus stop is almost here", message: "Get ready to pull the cord!", preferredStyle: UIAlertControllerStyle.Alert)
                 
                 let okay = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
                 entryAlert.addAction(okay)
@@ -233,7 +233,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
                 
                 var entryNotification = UILocalNotification()
                 entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
-                entryNotification.alertBody = "Bus stop is imminent."
+                entryNotification.alertBody = "Your bus stop is almost here, get ready to pull the cord!"
                 entryNotification.soundName = "Alarm.aiff"
                 entryNotification.timeZone = NSTimeZone.defaultTimeZone()
                 UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
