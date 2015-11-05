@@ -21,7 +21,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     var locations = Dictionary<String, Array<Double>>()
     
     var audioPlayer = AVAudioPlayer()
-    var audioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("SomebodyStopMeBell", ofType: "aiff")!)
+    var audioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("ShortBell", ofType: "aiff")!)
 
 
     @IBAction func createFavorite(sender: UIButton) {
@@ -181,7 +181,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         var entryNotification = UILocalNotification()
         entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
         entryNotification.alertBody = "Your bus stop is approaching. Be prepared to get off the bus shortly."
-        entryNotification.soundName = "SomebodyStopMeBell.aiff"
+        entryNotification.soundName = "ShortBell.aiff"
         entryNotification.timeZone = NSTimeZone.defaultTimeZone()
         entryNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         
@@ -206,7 +206,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
             var entryNotification = UILocalNotification()
             entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
             entryNotification.alertBody = "Your bus stop is approaching. Be prepared to get off the bus shortly."
-            entryNotification.soundName = "SomebodyStopMeBell.aiff"
+            entryNotification.soundName = "ShortBell.aiff"
             entryNotification.timeZone = NSTimeZone.defaultTimeZone()
             entryNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
             
@@ -233,7 +233,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
                 var entryNotification = UILocalNotification()
                 entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
                 entryNotification.alertBody = "GET OFF THE BUS."
-                entryNotification.soundName = "SomebodyStopMeBell.aiff"
+                entryNotification.soundName = "0342.aiff"
                 entryNotification.timeZone = NSTimeZone.defaultTimeZone()
                 UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
             }
