@@ -120,12 +120,10 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     @IBAction func getLocation(sender: AnyObject) {
         manager?.requestWhenInUseAuthorization()
         manager?.startUpdatingLocation()
-        print("test1")
     }
     
     @IBAction func regionMonitoring(sender: AnyObject) {
         manager?.requestAlwaysAuthorization()
-        print("test2")
         let mapRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2D(latitude: latitude, longitude: longitude), 3000, 3000)
         self.onnscreenMap.setRegion(mapRegion, animated: true)
     }
@@ -183,12 +181,11 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         var entryNotification = UILocalNotification()
         entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
         entryNotification.alertBody = "Your bus stop is approaching. Be prepared to get off the bus shortly."
-        entryNotification.soundName = "SomebodyStopMeBell.aiff"
+        entryNotification.soundName = "ShortBell.aiff"
         entryNotification.timeZone = NSTimeZone.defaultTimeZone()
         entryNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         
         UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
-        print("test4")
     
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!){
@@ -203,20 +200,17 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
 
             entryAlert.addAction(okay)
             
-            
-            
             self.presentViewController(entryAlert, animated: true, completion: nil)
         
         
             var entryNotification = UILocalNotification()
             entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
             entryNotification.alertBody = "Your bus stop is approaching. Be prepared to get off the bus shortly."
-            entryNotification.soundName = "SomebodyStopMeBell.aiff"
+            entryNotification.soundName = "ShortBell.aiff"
             entryNotification.timeZone = NSTimeZone.defaultTimeZone()
             entryNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
             
             UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
-            print("test4")
        
     
         
@@ -226,10 +220,10 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
                 
                 
                 var innerAudioPlayer = AVAudioPlayer()
-                var innerAudioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("StopAlarm", ofType: "aiff")!)
+                var innerAudioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("0342", ofType: "aiff")!)
                 innerAudioPlayer.play()
                 
-                let entryAlert = UIAlertController(title: "Your stop is very near.", message: "Prepare to leave immediately.", preferredStyle: UIAlertControllerStyle.Alert)
+                let entryAlert = UIAlertController(title: "Bus Stop Is imminent", message: "Pull!", preferredStyle: UIAlertControllerStyle.Alert)
                 
                 let okay = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil)
                 entryAlert.addAction(okay)
@@ -267,8 +261,6 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         exitNotification.timeZone = NSTimeZone.defaultTimeZone()
         
         UIApplication.sharedApplication().scheduleLocalNotification(exitNotification)
-        print("test5")
-
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!){
