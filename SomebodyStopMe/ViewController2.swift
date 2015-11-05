@@ -21,7 +21,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     var locations = Dictionary<String, Array<Double>>()
     
     var audioPlayer = AVAudioPlayer()
-    var audioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("SomebodyStopMeBell", ofType: "aiff")!)
+    var audioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("ShortBell", ofType: "aiff")!)
 
 
     @IBAction func createFavorite(sender: UIButton) {
@@ -182,16 +182,19 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         if region == CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 700, identifier: "Test") {
         
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+            audioPlayer.play()
             
             let entryAlert = UIAlertController(title: "Bus Stop Is Approaching", message: "You'll need to get off the bus soon.", preferredStyle: UIAlertControllerStyle.Alert)
             
             let okay = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
+
             entryAlert.addAction(okay)
             
-            audioPlayer.play()
+            
             
             self.presentViewController(entryAlert, animated: true, completion: nil)
-            
+        
+        
             var entryNotification = UILocalNotification()
             entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
             entryNotification.alertBody = "Your bus stop is approaching. Be prepared to get off the bus shortly."
@@ -201,10 +204,17 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
             
             UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
             print("test4")
-            
+       
+    
+        
         } else if region == CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 350, identifier: "Test Smaller Region")
             {
                 NSLog("Your bus stop is RIGHT NOW.")
+                
+                
+                var innerAudioPlayer = AVAudioPlayer()
+                var innerAudioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("StopAlarm", ofType: "aiff")!)
+                innerAudioPlayer.play()
                 
                 let entryAlert = UIAlertController(title: "Bus Stop Is RIGHT NOW", message: "LEAVE.", preferredStyle: UIAlertControllerStyle.Alert)
                 
