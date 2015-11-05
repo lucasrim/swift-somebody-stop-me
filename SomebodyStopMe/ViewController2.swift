@@ -22,6 +22,8 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     
     var audioPlayer = AVAudioPlayer()
     var audioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("ShortBell", ofType: "aiff")!)
+    var innerAudioPlayer = AVAudioPlayer()
+    var innerAudioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Alarm", ofType: "aiff")!)
 
 
     @IBAction func createFavorite(sender: UIButton) {
@@ -88,6 +90,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         onnscreenMap.addAnnotation(annotation)
         
         try! audioPlayer = AVAudioPlayer(contentsOfURL: audioUrl)
+        try! innerAudioPlayer = AVAudioPlayer(contentsOfURL: innerAudioUrl)
         
     }
 
@@ -165,28 +168,28 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         
     }
     
-    func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!){
-        NSLog("Your bus stop is approaching.")
-        
-        audioPlayer.play()
-        
-        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-        
-        let entryAlert = UIAlertController(title: "Bus Stop Is Approaching", message: "You'll need to get off the bus soon.", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        let okay = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
-        entryAlert.addAction(okay)
-        self.presentViewController(entryAlert, animated: true, completion: nil)
-        
-        var entryNotification = UILocalNotification()
-        entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
-        entryNotification.alertBody = "Your bus stop is approaching. Be prepared to get off the bus shortly."
-        entryNotification.soundName = "ShortBell.aiff"
-        entryNotification.timeZone = NSTimeZone.defaultTimeZone()
-        entryNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
-        
-        UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
-    
+//    func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!){
+//        NSLog("Your bus stop is approaching.")
+//        
+//        audioPlayer.play()
+//        
+//        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+//        
+//        let entryAlert = UIAlertController(title: "Bus Stop Is Approaching", message: "You'll need to get off the bus soon.", preferredStyle: UIAlertControllerStyle.Alert)
+//        
+//        let okay = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
+//        entryAlert.addAction(okay)
+//        self.presentViewController(entryAlert, animated: true, completion: nil)
+//        
+//        var entryNotification = UILocalNotification()
+//        entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
+//        entryNotification.alertBody = "Your bus stop is approaching. Be prepared to get off the bus shortly."
+//        entryNotification.soundName = "ShortBell.aiff"
+//        entryNotification.timeZone = NSTimeZone.defaultTimeZone()
+//        entryNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+//        
+//        UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
+  
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!){
         if region == CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 700, identifier: "Test") {
@@ -217,28 +220,26 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         } else if region == CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 350, identifier: "Test Smaller Region")
             {
                 NSLog("Your bus stop is here.")
-                
-                
-                var innerAudioPlayer = AVAudioPlayer()
-                var innerAudioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("0342", ofType: "aiff")!)
+
+                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                 innerAudioPlayer.play()
                 
-                let entryAlert = UIAlertController(title: "Bus Stop Is imminent", message: "Pull!", preferredStyle: UIAlertControllerStyle.Alert)
+                let entryAlert = UIAlertController(title: "Bus stop is imminent", message: "Pull!", preferredStyle: UIAlertControllerStyle.Alert)
                 
-                let okay = UIAlertAction(title: "The bus is arriving at your destination.", style: UIAlertActionStyle.Default, handler: nil)
+                let okay = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
                 entryAlert.addAction(okay)
                 
                 self.presentViewController(entryAlert, animated: true, completion: nil)
                 
                 var entryNotification = UILocalNotification()
                 entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
-                entryNotification.alertBody = "GET OFF THE BUS."
-                entryNotification.soundName = "0342.aiff"
+                entryNotification.alertBody = "Bus stop is imminent."
+                entryNotification.soundName = "Alarm.aiff"
                 entryNotification.timeZone = NSTimeZone.defaultTimeZone()
                 UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
             }
         }
-    }
+  
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!){
         NSLog("Have you missed your stop?")
@@ -249,7 +250,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         
         let okay1 = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
         exitAlert.addAction(okay1)
-        
+      
         audioPlayer.play()
         
         self.presentViewController(exitAlert, animated: true, completion: nil)
