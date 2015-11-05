@@ -222,23 +222,23 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         
         } else if region == CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 350, identifier: "Test Smaller Region")
             {
-                NSLog("Your bus stop is RIGHT NOW.")
+                NSLog("Your bus stop is very near.")
                 
                 
                 var innerAudioPlayer = AVAudioPlayer()
                 var innerAudioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("StopAlarm", ofType: "aiff")!)
                 innerAudioPlayer.play()
                 
-                let entryAlert = UIAlertController(title: "Bus Stop Is RIGHT NOW", message: "LEAVE.", preferredStyle: UIAlertControllerStyle.Alert)
+                let entryAlert = UIAlertController(title: "Your stop is very near.", message: "Prepare to leave immediately.", preferredStyle: UIAlertControllerStyle.Alert)
                 
-                let okay = UIAlertAction(title: "GET OFF THE BUS", style: UIAlertActionStyle.Default, handler: nil)
+                let okay = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil)
                 entryAlert.addAction(okay)
                 
                 self.presentViewController(entryAlert, animated: true, completion: nil)
                 
                 var entryNotification = UILocalNotification()
                 entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
-                entryNotification.alertBody = "GET OFF THE BUS."
+                entryNotification.alertBody = "Prepare to leave immediately."
                 entryNotification.soundName = "SomebodyStopMeBell.aiff"
                 entryNotification.timeZone = NSTimeZone.defaultTimeZone()
                 UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
