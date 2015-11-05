@@ -157,7 +157,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         
         UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
         print("test4")
-    }
+    
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!){
         if region == CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 700, identifier: "Test") {
@@ -201,6 +201,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
                 entryNotification.timeZone = NSTimeZone.defaultTimeZone()
                 UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
             }
+        }
     }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!){
