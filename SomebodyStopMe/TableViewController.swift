@@ -82,6 +82,32 @@ class TableViewController: UITableViewController {
         }    
     }
   
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {    
+      let row = indexPath.row
+      print("55555555")
+      self.performSegueWithIdentifier("favoriteToMap", sender: self)
+    }
+  
+  
+  
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+      if segue.identifier == "favoriteToMap" {
+        if let destination = segue.destinationViewController as? ViewController2 {
+          print(sender)
+          if let locationIndex = tableView.indexPathForSelectedRow {
+            print(locationIndex)
+            let cell = tableView.cellForRowAtIndexPath(locationIndex)! as UITableViewCell
+            print(cell.textLabel!.text)
+            print(self.locations[cell.textLabel!.text!]![0] as Double)
+            print(self.locations[cell.textLabel!.text!]![1] as Double)
+            destination.longitude = self.locations[cell.textLabel!.text!]![1] as Double
+            destination.latitude = self.locations[cell.textLabel!.text!]![0] as Double
+            print("**************")
+          }
+        }
+      }
+    }
+  
 
     /*
     // Override to support rearranging the table view.
