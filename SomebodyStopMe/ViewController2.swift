@@ -34,10 +34,23 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         let favName = alert.textFields![0].text as String!
         
         // Loading NSUserDefaults locations
-        self.locations = NSUserDefaults.standardUserDefaults().objectForKey("favorites")! as! NSDictionary as! Dictionary<String, Array<Double>>
+        if NSUserDefaults.standardUserDefaults().objectForKey("favorites") != nil {
+            self.locations = NSUserDefaults.standardUserDefaults().objectForKey("favorites")! as! NSDictionary as! Dictionary<String, Array<Double>>
+        }
         // Adding new favorite location to NSUserDefaults
         self.locations[favName] = [self.latitude,self.longitude]
         NSUserDefaults.standardUserDefaults().setObject(self.locations, forKey:"favorites")
+        
+        if favName != "" {
+        
+          // Loading NSUserDefaults locations
+          if NSUserDefaults.standardUserDefaults().objectForKey("favorites") != nil {
+            self.locations = NSUserDefaults.standardUserDefaults().objectForKey("favorites")! as! NSDictionary as! Dictionary<String, Array<Double>>
+          }
+          // Adding new favorite location to NSUserDefaults
+          self.locations[favName] = [self.latitude,self.longitude]
+          NSUserDefaults.standardUserDefaults().setObject(self.locations, forKey:"favorites")
+        }
         
       }))
       self.presentViewController(alert, animated: true, completion: nil)
