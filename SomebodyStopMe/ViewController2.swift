@@ -207,7 +207,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
                 
                 
                 var innerAudioPlayer = AVAudioPlayer()
-                var innerAudioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("StopAlarm", ofType: "aiff")!)
+                var innerAudioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("0342", ofType: "aiff")!)
                 innerAudioPlayer.play()
                 
                 let entryAlert = UIAlertController(title: "Bus Stop Is RIGHT NOW", message: "LEAVE.", preferredStyle: UIAlertControllerStyle.Alert)
