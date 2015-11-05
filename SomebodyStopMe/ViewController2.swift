@@ -120,12 +120,10 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     @IBAction func getLocation(sender: AnyObject) {
         manager?.requestWhenInUseAuthorization()
         manager?.startUpdatingLocation()
-        print("test1")
     }
     
     @IBAction func regionMonitoring(sender: AnyObject) {
         manager?.requestAlwaysAuthorization()
-        print("test2")
         let mapRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2D(latitude: latitude, longitude: longitude), 3000, 3000)
         self.onnscreenMap.setRegion(mapRegion, animated: true)
     }
@@ -188,7 +186,6 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         entryNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         
         UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
-        print("test4")
     
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!){
@@ -203,8 +200,6 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
 
             entryAlert.addAction(okay)
             
-            
-            
             self.presentViewController(entryAlert, animated: true, completion: nil)
         
         
@@ -216,17 +211,16 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
             entryNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
             
             UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
-            print("test4")
        
     
         
         } else if region == CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: 350, identifier: "Test Smaller Region")
             {
-                NSLog("Your bus stop is RIGHT NOW.")
+                NSLog("Your bus stop is here.")
                 
                 
                 var innerAudioPlayer = AVAudioPlayer()
-                var innerAudioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("StopAlarm", ofType: "aiff")!)
+                var innerAudioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("0342", ofType: "aiff")!)
                 innerAudioPlayer.play()
                 
                 let entryAlert = UIAlertController(title: "Bus Stop Is imminent", message: "Pull!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -267,8 +261,6 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
         exitNotification.timeZone = NSTimeZone.defaultTimeZone()
         
         UIApplication.sharedApplication().scheduleLocalNotification(exitNotification)
-        print("test5")
-
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!){
