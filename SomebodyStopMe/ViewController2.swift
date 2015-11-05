@@ -21,7 +21,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     var locations = Dictionary<String, Array<Double>>()
     
     var audioPlayer = AVAudioPlayer()
-    var audioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("ShortBell", ofType: "aiff")!)
+    var audioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("SomebodyStopMeBell", ofType: "aiff")!)
 
 
     @IBAction func createFavorite(sender: UIButton) {
@@ -229,9 +229,9 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
                 var innerAudioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("StopAlarm", ofType: "aiff")!)
                 innerAudioPlayer.play()
                 
-                let entryAlert = UIAlertController(title: "Bus Stop Is RIGHT NOW", message: "LEAVE.", preferredStyle: UIAlertControllerStyle.Alert)
+                let entryAlert = UIAlertController(title: "Bus Stop Is imminent", message: "Pull!", preferredStyle: UIAlertControllerStyle.Alert)
                 
-                let okay = UIAlertAction(title: "GET OFF THE BUS", style: UIAlertActionStyle.Default, handler: nil)
+                let okay = UIAlertAction(title: "The bus is arriving at your destination.", style: UIAlertActionStyle.Default, handler: nil)
                 entryAlert.addAction(okay)
                 
                 self.presentViewController(entryAlert, animated: true, completion: nil)
