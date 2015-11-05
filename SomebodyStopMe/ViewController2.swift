@@ -18,12 +18,31 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
     var manager: CLLocationManager?
     var latitude: Double = 0.0
     var longitude: Double = 0.0
+    var locations = Dictionary<String, Array<Double>>()
     
     var audioPlayer = AVAudioPlayer()
     var audioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("SomebodyStopMeBell", ofType: "aiff")!)
 
 
-    
+    @IBAction func createFavorite(sender: UIButton) {
+      let alert = UIAlertController(title: "New favorite", message: "Name this location", preferredStyle: UIAlertControllerStyle.Alert)
+      alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+        textField.text = ""
+        })
+      alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler:{ (alertAction:UIAlertAction!) in
+        // Setting favorite name from alert
+        let favName = alert.textFields![0].text as String!
+        
+        // Loading NSUserDefaults locations
+        self.locations = NSUserDefaults.standardUserDefaults().objectForKey("favorites")! as! NSDictionary as! Dictionary<String, Array<Double>>
+        // Adding new favorite location to NSUserDefaults
+        self.locations[favName] = [self.latitude,self.longitude]
+        NSUserDefaults.standardUserDefaults().setObject(self.locations, forKey:"favorites")
+        
+      }))
+      self.presentViewController(alert, animated: true, completion: nil)
+    }
+  
     @IBOutlet weak var onnscreenMap: MKMapView!
     @IBOutlet weak var address: UILabel!
     
@@ -197,7 +216,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate, MKMapViewDel
                 var entryNotification = UILocalNotification()
                 entryNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
                 entryNotification.alertBody = "GET OFF THE BUS."
-                entryNotification.soundName = "TrainHorn.mp3"
+                entryNotification.soundName = "SomebodyStopMeBell.aiff"
                 entryNotification.timeZone = NSTimeZone.defaultTimeZone()
                 UIApplication.sharedApplication().scheduleLocalNotification(entryNotification)
             }
