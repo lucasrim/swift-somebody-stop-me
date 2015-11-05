@@ -67,8 +67,8 @@
 		E0CC48151BE7CE920015CB7A /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		EBD189CC1BEA674100350836 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EBD189CE1BEAA99B00350836 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		EBD189D61BEBC07900350836 /* 0342.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = 0342.aiff; sourceTree = "<group>"; };
-		EBD189DA1BEBC19300350836 /* ShortBell.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = ShortBell.aiff; sourceTree = "<group>"; };
+		EBD189D61BEBC07900350836 /* 0342.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = 0342.aiff; path = ../0342.aiff; sourceTree = "<group>"; };
+		EBD189DA1BEBC19300350836 /* ShortBell.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = ShortBell.aiff; path = ../ShortBell.aiff; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +102,6 @@
 		E07CBBEB1BE4006C005A0C38 = {
 			isa = PBXGroup;
 			children = (
-				EBD189DA1BEBC19300350836 /* ShortBell.aiff */,
-				EBD189D61BEBC07900350836 /* 0342.aiff */,
 				EBD189CE1BEAA99B00350836 /* AudioToolbox.framework */,
 				EBD189CC1BEA674100350836 /* AVFoundation.framework */,
 				E07CBC271BE42652005A0C38 /* Default-568h@2x.png */,
@@ -129,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				520840781BE845D100B367A0 /* default.gpx */,
+				EBD189D61BEBC07900350836 /* 0342.aiff */,
+				EBD189DA1BEBC19300350836 /* ShortBell.aiff */,
 				520840791BE845D100B367A0 /* SomebodyStopMeBell.aiff */,
 				E07CBBF71BE4006C005A0C38 /* AppDelegate.swift */,
 				E0CC48151BE7CE920015CB7A /* ViewController2.swift */,
